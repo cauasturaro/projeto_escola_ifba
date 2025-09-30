@@ -35,15 +35,8 @@ int validate_gender(char g) {
 
 int validate_cpf(char cpf[]) {
     int len = strlen(cpf);
-
-    if (len != 11) return 0; 
-
-    for (int i = 0; i < len; i++) {
-        if (cpf[i] < '0' || cpf[i] > '9') {
-            return 0;
-        }
-    }
-    return 1; 
+    if (len != 11) return 0;
+    return 1;
 }
 
 int validate_ID(char id[]){
@@ -74,19 +67,45 @@ int validate_birth(char birth[]){
     return 1;
 }
 
-void read_id (char id[]){
-    printf("Enter the registration number: ");
-    scanf("%s", id);
-    getchar();
-    while(!validate_ID(id)){
-        printf("Invalid ID! Please enter again: ");
+void read_id(char id[], int type){
+    while(1) {
+        printf("Digite o numero de matricula: ");
         scanf("%s", id);
         getchar();
+
+        if (!validate_ID(id)) {
+            printf("Matricula invalida! Digite novamente.\n");
+            continue;
+        }
+
+        int duplicate = 0;
+        if (type == 1) { 
+            for(int i = 0; i < total_students; i++){
+                if(strcmp(students[i].id, id) == 0){
+                    duplicate = 1;
+                    break;
+                }
+            }
+        } else if (type == 2) { 
+            for(int i = 0; i < total_teachers; i++){
+                if(strcmp(teachers[i].id, id) == 0){
+                    duplicate = 1;
+                    break;
+                }
+            }
+        }
+
+        if(duplicate){
+            printf("ID já cadastrado! Digite outro.\n");
+            continue;
+        }
+
+        break; 
     }
 }
 
 void read_name (char name[]){
-    printf("Enter the person's name: ");
+    printf("Digite o nome da pessoa: ");
     fgets(name, size_name, stdin);
     int size = strlen (name);
     if(size > 0 && name[size - 1] == '\n'){
@@ -94,7 +113,7 @@ void read_name (char name[]){
     }
 
     while (!validate_name(name)){
-        printf("Invalid name! Please enter only letters: ");
+        printf("Nome invalido! Digite apenas letras: ");
         fgets(name, size_name, stdin);
         size = strlen (name);
         if(size > 0 && name[size - 1] == '\n'){
@@ -105,14 +124,14 @@ void read_name (char name[]){
 
 char read_gender() {
     char g;
-    printf("Enter the gender (M/F): ");
+    printf("Digite o sexo (M/F): ");
     scanf("%c", &g);
     getchar();
     if (g >= 'a' && g <= 'z') {
         g = g - 'a' + 'A';
     }
     while(!validate_gender(g)){
-        printf("Invalid gender! Enter M or F: ");
+        printf("Sexo invalido! Digite M ou F: ");
         scanf("%c", &g);
         getchar();
     }
@@ -120,14 +139,14 @@ char read_gender() {
 }
 
 void read_birth (char birth[]){
-    printf("Enter date of birth (DD/MM/YYYY): ");
+    printf("Digite a data de nascimento (DD/MM/AAAA): ");
     fgets(birth, size_birth, stdin);
     int size = strlen (birth);
     if(size > 0 && birth[size - 1] == '\n'){
         birth[size - 1] = '\0';
     }
     while(!validate_birth(birth)){
-        printf("Invalid birth! Please enter again: ");
+        printf("Data invalida! Digite novamente (DD/MM/AAAA): ");
         fgets(birth, size_birth, stdin);
         size = strlen (birth);
         if(size > 0 && birth[size - 1] == '\n'){
@@ -136,14 +155,43 @@ void read_birth (char birth[]){
     }
 }
 
-void read_cpf (char cpf[]){
-    printf("Enter the person's CPF number (only numbers): ");
-    scanf("%s", cpf);
-    getchar();
-    while(!validate_cpf(cpf)){
-        printf("Invalid CPF! Please enter again: ");
-        scanf("%s", cpf);
+void read_cpf(char cpf[], int type, int ignore_index) {
+    char temp[size_cpf];
+
+    while(1){
+        printf("Digite o CPF (apenas numeros): ");
+        scanf("%s", temp);
         getchar();
+
+        if(!validate_cpf(temp)){
+            printf("CPF invalido! Digite novamente.\n");
+            continue;
+        }
+
+        int duplicate = 0;
+        if(type == 1){
+            for(int i = 0; i < total_students; i++){
+                if(i != ignore_index && strcmp(students[i].CPF, temp) == 0){
+                    duplicate = 1;
+                    break;
+                }
+            }
+        } else if(type == 2){
+            for(int i = 0; i < total_teachers; i++){
+                if(i != ignore_index && strcmp(teachers[i].CPF, temp) == 0){
+                    duplicate = 1;
+                    break;
+                }
+            }
+        }
+
+        if(duplicate){
+            printf("CPF já cadastrado! Digite outro.\n");
+            continue;
+        }
+
+        strcpy(cpf, temp);
+        break;
     }
 }
 
@@ -151,20 +199,20 @@ void register_person(int type){
     Person new_person;
     if(type == 1){
         if(total_students >= max_people){
-            printf("Error! Student limit reached.\n");
+            printf("Erro! Limite de estudantes atingido.\n");
             return;
         }
     }
     else if (type == 2){
         if(total_teachers >= max_people){
-            printf("Error! Teacher limit reached.\n");
+            printf("Erro! Limite de estudantes atingido.\n");
         return;
         }
     }
 
-    printf("\nRegistering a new person. \n"); 
+    printf("\nRegistrando uma nova pessoa. \n"); 
 
-    read_id(new_person.id);
+    read_id(new_person.id, type);
 
     read_name(new_person.name);
 
@@ -172,22 +220,22 @@ void register_person(int type){
 
     read_birth(new_person.birth);
 
-    read_cpf(new_person.CPF);
+    read_cpf(new_person.CPF, type, -1);
 
     if(type == 1){
         students[total_students] = new_person;
         total_students++;
-        printf("Student successfully registered.\n\n");
+        printf("Estudante registrado com sucesso.\n\n");
     }
     else if (type == 2){
         teachers[total_teachers] = new_person;
         total_teachers++;
-        printf("Successfully registered teacher.\n\n");
+        printf("Professor registrado com sucesso.\n\n");
     }
 }
 
 void list_students(){
-    printf("\nStudents\n");
+    printf("\nEstudantes\n");
     for(int i=0; i<total_students; i++){
         printf("> ID: %s | Name: %s | Gender: %c | Birth: %s | CPF: %s\n",
                students[i].id, students[i].name, students[i].gender,
@@ -205,9 +253,9 @@ void list_teachers(){
 }
 
 
-void update_person(Person array[], int total) {
+void update_person(Person array[], int total, int type) {
     char id[size_id];
-    printf("Enter the ID for the update: ");
+    printf("Digite o ID para atualizacao: ");
     scanf("%s", id);
     getchar();
 
@@ -219,19 +267,19 @@ void update_person(Person array[], int total) {
         }
     }
     if (index == -1) {
-        printf("ID not found.\n");
+        printf("ID nao encontrado.\n");
         return;
     }
 
     int option = 0;
     do {
-        printf("Updating ID %s.\n", array[index].id);
-        printf("1 - Change name\n");
-        printf("2 - Change gender\n");
-        printf("3 - Change birthday\n");
-        printf("4 - Change CPF\n");
-        printf("0 - Exit\n");
-        printf("Choose an option: ");
+        printf("Atualizando o ID %s.\n", array[index].id);
+        printf("1 - Atualizar nome\n");
+        printf("2 - Atualizar genero\n");
+        printf("3 - Atualizar data de aniversario\n");
+        printf("4 - Atualizar CPF\n");
+        printf("0 - Sair\n");
+        printf("Escolha uma das opcoes: ");
         scanf("%d", &option);
         getchar();
         printf("\n");
@@ -239,79 +287,43 @@ void update_person(Person array[], int total) {
         switch (option) {
             case 1: {
                 char temp[size_name];
-                printf("Enter new name: ");
-                fgets(temp, size_name, stdin);
-                int len = strlen(temp);
-                if (len > 0 && temp[len - 1] == '\n') temp[len - 1] = '\0';
-
-                if (validate_name(temp)) {
-                    strcpy(array[index].name, temp);
-                } else {
-                    printf("Invalid name!\n");
-                }
+                read_name(temp); 
+                strcpy(array[index].name, temp);
                 break;
             }
             case 2: {
-                char g;
-                printf("Enter new gender (M/F): ");
-                scanf("%c", &g);
-                getchar();
-
-                if (g >= 'a' && g <= 'z') {
-                    g = g - 'a' + 'A';
-                }
-                if (validate_gender(g)) {
-                    array[index].gender = g;
-                } else {
-                    printf("Invalid gender!\n");
-                }
+                char g = read_gender(); 
+                array[index].gender = g; 
                 break;
             }
             case 3: {
                 char temp[size_birth];
-                printf("Enter new date of birth (DD/MM/YYYY): ");
-                fgets(temp, size_birth, stdin);
-                int len = strlen(temp);
-                if (len > 0 && temp[len - 1] == '\n') temp[len - 1] = '\0';
-
-                if (validate_birth(temp)) {
-                    strcpy(array[index].birth, temp);
-                } else {
-                    printf("Invalid date of birth!\n");
-                }
+                read_birth(temp);
+                strcpy(array[index].birth, temp);
                 break;
             }
             case 4: {
-                char temp[size_cpf];
-                printf("Enter new CPF (only numbers): ");
-                scanf("%s", temp);
-                getchar();
-                while(!validate_cpf(temp)){
-                    printf("Invalid CPF! Please enter again: ");
-                    scanf("%s", temp);
-                    getchar();
-                }
-                strcpy(array[index].CPF, temp);
+                read_cpf(array[index].CPF, type, index);
                 break;
             }
             case 0:
-                printf("No updates.\n");
+                printf("Saindo das atualizacoes.\n");
                 break;
             default:
-                printf("Invalid option.\n");
+                printf("Opcao invalida.\n");
         }
-    } while (option != 0);
+     } while (option != 0);
 }
 
 /*
-para atualizar o cadastro de alunos vai ser puxada a função update_person(students, total_students);
-para atualizar o cadastro de professores vai ser puxada a função update_person(teachers, total_teachers);
+para atualizar o cadastro de alunos vai ser puxada a função update_person(students, total_students, 1);
+para atualizar o cadastro de professores vai ser puxada a função update_person(teachers, total_teachers, 2);
 */
 
 int main(){
     register_person(1);
     list_students();
-    update_person(students, total_students);
+    update_person(students, total_students, 1);
     list_students();
     return 0;
 }
