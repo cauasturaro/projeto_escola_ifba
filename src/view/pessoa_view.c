@@ -1,24 +1,24 @@
 #include <stdio.h>
 #include "pessoa_view.h"
+#include "../model/pessoa.h"
+
+void list_people(const char *titulo, Person array[], int total)
+{
+    printf("\n%s\n", titulo);
+    for (int i = 0; i < total; i++)
+    {
+        printf("> ID: %s | Name: %s | Gender: %c | Birth: %s | CPF: %s\n",
+               array[i].id, array[i].name, array[i].gender,
+               array[i].birth, array[i].CPF);
+    }
+}
 
 void list_students()
 {
-    printf("\nEstudantes\n");
-    for (int i = 0; i < total_students; i++)
-    {
-        printf("> ID: %s | Name: %s | Gender: %c | Birth: %s | CPF: %s\n",
-               students[i].id, students[i].name, students[i].gender,
-               students[i].birth, students[i].CPF);
-    }
+    list_people("Estudantes", students, total_students);
 }
 
 void list_teachers()
 {
-    printf("\nProfessores\n");
-    for (int i = 0; i < total_teachers; i++)
-    {
-        printf("> ID: %s | Name: %s | Gender: %c | Birth: %s | CPF: %s\n",
-               teachers[i].id, teachers[i].name, teachers[i].gender,
-               teachers[i].birth, teachers[i].CPF);
-    }
+    list_people("Professores", teachers, total_teachers);
 }
