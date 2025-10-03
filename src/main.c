@@ -15,22 +15,27 @@ int main()
         switch (opcao)
         {
         case 1:
+            clear_screen();
             register_person(1);
             list_students();
 
             break;
         case 2:
+            clear_screen();
             register_person(2);
             break;
         case 3:
+            clear_screen();
             list_students();
             pause_view();
             break;
         case 4:
+            clear_screen();
             list_teachers();
             pause_view();
             break;
         case 0:
+            clear_screen();
             printf("Saindo...\n");
             break;
         default:
