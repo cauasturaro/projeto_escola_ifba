@@ -15,4 +15,7 @@ char read_gender();
 void read_birth(char birth[]);
 void read_cpf(char cpf[], int type, int ignore_index);
 
+void clear_screen();
+void pause_view();
+
 #endif

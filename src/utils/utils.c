@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 #include "utils.h"
 
 int validate_name(char name[])
@@ -208,4 +209,22 @@ void read_cpf(char cpf[], int type, int ignore_index)
         strcpy(cpf, temp);
         break;
     }
+}
+
+void clear_screen()
+{
+#ifdef _WIN32
+    system("cls");
+#else
+    system("clear"); // Linux / macOS
+#endif
+}
+
+void pause_view()
+{
+    printf("Pressione ENTER para continuar...");
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF)
+        ; // para limpar buffer
+    getchar();
 }

@@ -15,10 +15,10 @@ void list_people(const char *titulo, Person array[], int total)
 
 void list_students()
 {
-    list_people("Estudantes", students, total_students);
+    list_people("------------Estudantes------------", students, total_students);
 }
 
 void list_teachers()
 {
-    list_people("Professores", teachers, total_teachers);
+    list_people("------------Professores------------", teachers, total_teachers);
 }
