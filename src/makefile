@@ -1,16 +1,29 @@
 CC = gcc
-CFLAGS = -Wall -Wextra -Icontroller -Imodel -Iview -Iutils
+CFLAGS = -Wall -Wextra -g
+INCLUDES = -Icontroller -Imodel -Iview -Iutils
 
-SRC = main.c \
-      controller/pessoa_controller.c \
-      model/pessoa.c \
-      view/pessoa_view.c \
-      utils/utils.c
+OUTPUT = ../output
+SUBDIRS = controller model view utils
 
-OBJ = $(SRC:.c=.o)
+TARGET = program
 
-program: $(OBJ)
-	$(CC) $(OBJ) -o program
+SRC = $(wildcard *.c controller/*.c model/*.c view/*.c utils/*.c)
+OBJ = $(patsubst %.c,$(OUTPUT)/%.o,$(SRC))
+
+all: $(TARGET)
+
+$(OUTPUT):
+	mkdir -p $(OUTPUT)
+	for dir in $(SUBDIRS); do \
+		mkdir -p $(OUTPUT)/$$dir; \
+	done
+
+$(TARGET): $(OBJ) | $(OUTPUT)
+	$(CC) $(CFLAGS) $(INCLUDES) -o $@ $(OBJ)
+
+$(OUTPUT)/%.o: %.c | $(OUTPUT)
+	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 clean:
-	rm -f $(OBJ) program
+	rm -rf $(OUTPUT)
+	rm -f $(TARGET)
