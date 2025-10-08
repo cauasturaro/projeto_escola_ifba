@@ -1,7 +1,10 @@
-#include "../models/disciplina.h"
-#include "../models/disciplina.c"
+#include <stdio.h>
+#include <string.h>
 
-void subjectModule()
+#include "disciplina_controller.h"
+#include "../utils/utils.h"
+
+void subject_module()
 {
     int option = 1;
     while (option)
@@ -26,19 +29,19 @@ void subjectModule()
             if (total_subjects >= TAM) {
                 printf("Limite de disciplinas atingido!\n");
             } else { 
-                addSubject(); }
+                add_subject(); }
             break;
 
         case 2:
-            listSubjects();
+            list_subjects();
             break;
 
         case 3:
-            listSubjects();
+            list_subject_students();
             break;
 
         case 4:
-            updateSubject();
+            update_subject();
             break;
 
         case 5:
@@ -52,66 +55,65 @@ void subjectModule()
     }
 }
 
-void addSubject()
+void add_subject()
 {
-    selectedSubject = &subjects[total_subjects];
+    selected_subject = &subjects[total_subjects];
 
     printf("Adicionando Disciplina...\n");
     
-    read_subject_name(subjectName, MAX_STR);
-    read_subject_code(subjectCode, MAX_CODE);
-    read_subject_semester(subjectSemester, MAX_STR);
+    read_subject_name(subject_name, MAX_STR);
+    read_subject_code(subject_code, MAX_CODE);
+    read_subject_semester(subject_semester, MAX_STR);
 
-    int selectedTeacherID = -1;
     printf("Selecione um professor para a disciplina:\n");
-    listPeople(teachers);
-    scanf("%d", &selectedTeacherID);
+    list_people(teachers);
+    
+    scanf("%d", &selected_teacher_id);
     getchar();
 
-    for (total_teachers = 0; teachers[total_teachers].registration; total_teachers++);
-    while ((selectedTeacherID > total_teachers) || (selectedTeacherID  <= 0)) {
+    for (total_teachers = 0; teachers[total_teachers].gender; total_teachers++);
+    while ((selected_teacher_id > total_teachers) || (selected_teacher_id  <= 0)) {
         printf("ID invalido!\n");
         printf("Selecione um professor para a disciplina:\n");
-        listPeople(teachers);
-        scanf("%d", &selectedTeacherID);
+        list_people(teachers);
+
+        scanf("%d", &selected_teacher_id);
         getchar();
     }
-    selectedTeacherID--;
+    selected_teacher_id--;
 
-    struct Subject newSubject;
-    strncpy(newSubject.name, subjectName, MAX_STR);
-    strncpy(newSubject.code, subjectCode, MAX_CODE);
-    newSubject.semester = atoi(subjectSemester);
-    newSubject.teacher = teachers[selectedTeacherID];
-    *selectedSubject = newSubject;
+    Subject new_subject;
+    strncpy(new_subject.name, subject_name, MAX_STR);
+    strncpy(new_subject.code, subject_code, MAX_CODE);
+    new_subject.semester = atoi(subject_semester);
+    new_subject.teacher = teachers[selected_teacher_id];
+    *selected_subject = new_subject;
 }
 
-void updateSubject()
+void update_subject()
 {
     int option = 1;
-    int selectedTeacherID = -1;
-    int selectedSubjectID = -1;
 
     printf("Atualizando Disciplina...\n");
-    listSubjects();
+    list_subjects();
 
     printf("Digite o ID da Disciplina que deseja atualizar:\n");
-    scanf("%d", &selectedSubjectID);
+    scanf("%d", &selected_subject_id);
     getchar();
     for (total_subjects = 0; subjects[total_subjects].semester; total_subjects++);
-    while ((selectedSubjectID > total_subjects) || (selectedSubjectID  <= 0)) {
+    while ((selected_subject_id > total_subjects) || (selected_subject_id  <= 0)) {
         printf("ID invalido!\n");
         printf("Digite o ID da Disciplina que deseja atualizar:\n");
-        listSubjects();
-        scanf("%d", &selectedSubjectID);
+        list_subjects();
+        scanf("%d", &selected_subject_id);
         getchar();
     }
-    selectedSubjectID--;
+    selected_subject_id--;
 
-    selectedSubject = &subjects[selectedSubjectID];
+    selected_subject = &subjects[selected_subject_id];
     while (option)
     {
-        printf("Atualizando disciplina %s...\n", selectedSubject->name);
+        printf("Atualizando disciplina %s...\n", selected_subject->name);
         printf("Selecione qual campo deseja alterar\n");
         printf("1 - Nome\n");
         printf("2 - Codigo\n");
@@ -126,41 +128,41 @@ void updateSubject()
         switch (option)
         {
         case 0:
-            printf("Saindo de Atualizar disciplina %s...\n", selectedSubject->name);
+            printf("Saindo de Atualizar disciplina %s...\n", selected_subject->name);
             return;
 
         case 1:
-            read_subject_name(subjectName, MAX_STR);
-            strncpy(selectedSubject->name, subjectName, MAX_STR);
+            read_subject_name(subject_name, MAX_STR);
+            strncpy(selected_subject->name, subject_name, MAX_STR);
             break;
 
         case 2:
-            read_subject_code(subjectCode, MAX_CODE);
-            strncpy(selectedSubject->code, subjectCode, MAX_STR);
+            read_subject_code(subject_code, MAX_CODE);
+            strncpy(selected_subject->code, subject_code, MAX_STR);
             break;
 
         case 3:
-            read_subject_semester(subjectSemester, MAX_STR);
-            selectedSubject->semester = atoi(subjectSemester);
+            read_subject_semester(subject_semester, MAX_STR);
+            selected_subject->semester = atoi(subject_semester);
             break;
 
         case 4:
             printf("Selecione um professor para a disciplina:\n");
-            listPeople(teachers);
-            scanf("%d", &selectedTeacherID);
+            list_people(teachers);
+            scanf("%d", &selected_teacher_id);
             getchar();
 
-            for (total_teachers = 0; teachers[total_teachers].registration; total_teachers++);
-            while ((selectedTeacherID > total_teachers) || (selectedTeacherID  <= 0)) {
+            for (total_teachers = 0; teachers[total_teachers].gender; total_teachers++);
+            while ((selected_teacher_id > total_teachers) || (selected_teacher_id  <= 0)) {
                 printf("ID invalido!\n");
                 printf("Selecione um professor para a disciplina:\n");
-                listPeople(teachers);
-                scanf("%d", &selectedTeacherID);
+                list_people(teachers);
+                scanf("%d", &selected_teacher_id);
                 getchar();
             }
-            selectedTeacherID--;
+            selected_teacher_id--;
 
-            selectedSubject->teacher = teachers[selectedTeacherID];
+            selected_subject->teacher = teachers[selected_teacher_id];
             break;
 
         case 5:
@@ -174,4 +176,3 @@ void updateSubject()
         }
     }
 }
-
