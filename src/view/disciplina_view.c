@@ -18,7 +18,7 @@ void subjects_menu (int * option) {
 void list_subjects(int *subject_count)
 {
     if (*subject_count == 0) {
-            printf("Nao ha disciplinas cadastradas");
+            printf("Nao ha disciplinas cadastradas\n");
             return;
         }
 
@@ -32,6 +32,11 @@ void list_subjects(int *subject_count)
 
 void list_subject_students(Subject *selected_subject, int students_count)
 {
+    if (!total_subjects) {
+        printf("Nao ha disciplinas cadastradas.\n");
+        return;
+    }
+
     if (students_count == 0) {
         printf("%s nao possui alunos.", selected_subject->name);
         return;

@@ -60,24 +60,27 @@ void subject_module()
             break;
 
         case 3:
-            printf("Listando alunos...\n");
-            list_subjects(&total_subjects);
-
-            printf("Digite o ID da Disciplina que deseja listar alunos:\n");
-            scanf("%d", &selected_subject_id);
-            getchar();
-
-            while ((selected_subject_id > total_subjects) || (selected_subject_id  <= 0)) {
-                printf("ID invalido!\n");
+            if (!total_subjects) {
+                printf("Nao ha disciplinas cadastradas.\n");
+            } else {
                 list_subjects(&total_subjects);
-                printf("Digite o ID da disciplina que deseja listar alunos:\n");
+
+                printf("Digite o ID da Disciplina que deseja listar alunos:\n");
                 scanf("%d", &selected_subject_id);
                 getchar();
-            }
 
-            selected_subject_id--;
-            Subject *selected_subject = &subjects[selected_subject_id];
-            list_subject_students(selected_subject, selected_subject->students_count);
+                while ((selected_subject_id > total_subjects) || (selected_subject_id  <= 0)) {
+                    printf("ID invalido!\n");
+                    list_subjects(&total_subjects);
+                    printf("Digite o ID da disciplina que deseja listar alunos:\n");
+                    scanf("%d", &selected_subject_id);
+                    getchar();
+                }
+
+                selected_subject_id--;
+                Subject *selected_subject = &subjects[selected_subject_id];
+                list_subject_students(selected_subject, selected_subject->students_count);
+            }
             break;
 
         case 4:
@@ -118,6 +121,11 @@ void add_subject(int * subject_count, int *teachers_count)
 
 void update_subject(int *subjects_count, int *teachers_count)
 {
+    if (!(*subjects_count)) {
+        printf("Nao ha disciplinas cadastradas.\n");
+        return;
+    }
+
     int option = 1;
 
     printf("Atualizando Disciplina...\n");
