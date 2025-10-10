@@ -248,15 +248,14 @@ int validate_numeric_string(char numbers[]) {
 }
 
 int validate_code(char code[], int max_size) {
-    int i = 0;
     int max = max_size - 2;
 
     int size = strlen(code);
     
     if (size != max) { return 0; }
     
-    char letters[(max/2) + 1];
-    char numbers[(max/2) + 1];
+    char *letters = malloc((max/2) + 1);
+    char *numbers= malloc((max/2) + 1);
 
     for(int i = 0; i < max; i++) {
         if (i < (max/2)) {
@@ -313,5 +312,4 @@ void read_subject_semester (char subject_semester[], int tam_str) {
         fgets(subject_semester, tam_str, stdin);
         subject_semester[strcspn(subject_semester, "\n")] = '\0';
     }
-    printf("chegou: %s", subject_semester);
 }

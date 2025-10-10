@@ -10,6 +10,7 @@ void show_menu()
     printf("2 - Cadastrar professor\n");
     printf("3 - Listar estudantes\n");
     printf("4 - Listar professores\n");
+    printf("5 - Modulo disciplina\n");
     printf("0 - Sair\n");
     printf("Escolha uma opcao: ");
 }

@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include "menu.h"
+
+#include "disciplina_controller.h"
 #include "pessoa_controller.h"
 #include "pessoa_view.h"
 #include "utils.h"
@@ -32,6 +34,11 @@ int main()
         case 4:
             clear_screen();
             list_teachers();
+            pause_view();
+            break;
+        case 5:
+            clear_screen();
+            subject_module();
             pause_view();
             break;
         case 0:
