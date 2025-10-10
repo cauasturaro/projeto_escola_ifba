@@ -15,6 +15,7 @@ typedef struct Subject
     char semester[MAX_STR];
     Person teacher;
     Person students[MAX_STUDENTS];
+    int students_count;
 } Subject;
 
 extern Subject subjects[MAX_SUBJECTS];

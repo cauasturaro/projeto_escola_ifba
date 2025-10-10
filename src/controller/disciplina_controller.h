@@ -9,5 +9,7 @@
 void subject_module();
 void add_subject(int * subject_count, int *teachers_count);
 void update_subject(int *subjects_count, int *teachers_count);
+void add_subject_student(Subject *selected_subject, int *students_count, int *total_students_count);
+void remove_subject_student (Subject *selected_subject, int *students_count);
 
 #endif
