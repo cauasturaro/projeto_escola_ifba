@@ -26,7 +26,7 @@ void register_person(int type)
 
     printf("\nRegistrando uma nova pessoa. \n");
 
-    read_id(new_person.id, type);
+    read_registration(new_person.registration, type);
     read_name(new_person.name);
     new_person.gender = read_gender();
     read_birth(new_person.birth);
@@ -47,14 +47,14 @@ void register_person(int type)
 void update_person(Person array[], int total, int type)
 {
     char id[SIZE_ID];
-    printf("Digite o ID para atualizacao: ");
+    printf("Digite a matricula para atualizacao: ");
     scanf("%s", id);
     getchar();
 
     int index = -1;
     for (int i = 0; i < total; i++)
     {
-        if (strcmp(array[i].id, id) == 0)
+        if (strcmp(array[i].registration, id) == 0)
         {
             index = i;
             break;
@@ -62,14 +62,14 @@ void update_person(Person array[], int total, int type)
     }
     if (index == -1)
     {
-        printf("ID nao encontrado.\n");
+        printf("Matricula nao encontrada.\n");
         return;
     }
 
     int option = 0;
     do
     {
-        printf("Atualizando o ID %s.\n", array[index].id);
+        printf("Atualizando a matricula %s.\n", array[index].registration);
         printf("1 - Atualizar nome\n");
         printf("2 - Atualizar genero\n");
         printf("3 - Atualizar data de aniversario\n");

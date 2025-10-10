@@ -53,7 +53,7 @@ int validate_cpf(char cpf[])
     return len == 11;
 }
 
-int validate_ID(char id[])
+int validate_registration(char id[])
 {
     int len = strlen(id);
     if (len > 11 || len < 1)
@@ -86,14 +86,14 @@ int validate_birth(char birth[])
     return 1;
 }
 
-void read_id(char id[], int type)
+void read_registration(char id[], int type)
 {
     while (1)
     {
         printf("Digite o numero de matricula: ");
         scanf("%s", id);
         getchar();
-        if (!validate_ID(id))
+        if (!validate_registration(id))
         {
             printf("Matricula invalida! Digite novamente.\n");
             continue;
@@ -103,7 +103,7 @@ void read_id(char id[], int type)
         {
             for (int i = 0; i < total_students; i++)
             {
-                if (strcmp(students[i].id, id) == 0)
+                if (strcmp(students[i].registration, id) == 0)
                 {
                     duplicate = 1;
                     break;
@@ -114,7 +114,7 @@ void read_id(char id[], int type)
         {
             for (int i = 0; i < total_teachers; i++)
             {
-                if (strcmp(teachers[i].id, id) == 0)
+                if (strcmp(teachers[i].registration, id) == 0)
                 {
                     duplicate = 1;
                     break;
@@ -123,7 +123,7 @@ void read_id(char id[], int type)
         }
         if (duplicate)
         {
-            printf("ID já cadastrado! Digite outro.\n");
+            printf("Matricula já cadastrada! Digite outra.\n");
             continue;
         }
         break;

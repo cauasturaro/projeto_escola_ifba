@@ -9,7 +9,7 @@
 
 typedef struct
 {
-    char id[SIZE_ID];
+    char registration[SIZE_ID];
     char name[SIZE_NAME];
     char gender;
     char birth[SIZE_BIRTH];
