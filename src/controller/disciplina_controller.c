@@ -1,23 +1,36 @@
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 
 #include "disciplina_controller.h"
-#include "../utils/utils.h"
+
+void select_teacher (Person *subject_teacher, int *teachers_count) {
+    int selected_teacher_id = -1;
+
+    printf("Selecione um professor para a disciplina:\n");
+    list_teachers();
+    
+    scanf("%d", &selected_teacher_id);
+    getchar();
+
+    while ((selected_teacher_id > *teachers_count) || (selected_teacher_id  <= 0)) {
+        printf("ID invalido!\n");
+        printf("Selecione um professor para a disciplina:\n");
+        list_teachers();
+
+        scanf("%d", &selected_teacher_id);
+        getchar();
+    }
+    selected_teacher_id--;
+    *subject_teacher = teachers[selected_teacher_id];
+}
 
 void subject_module()
-{
+{   
     int option = 1;
     while (option)
     {
-        printf("1 - Adicionar Disciplina\n");
-        printf("2 - Listar Disciplinas\n");
-        printf("3 - Listar Alunos da Disciplina\n");
-        printf("4 - Atualizar Disciplina\n");
-        printf("5 - Remover Disciplina\n");
-        printf("0 - Sair\n");
-        scanf("%d", &option);
-        getchar();
-
+        subjects_menu(&option);
         switch (option)
         {
         case 0:
@@ -25,23 +38,19 @@ void subject_module()
             return;
 
         case 1:
-            for (total_subjects = 0; subjects[total_subjects].semester; total_subjects++);
-            if (total_subjects >= TAM) {
-                printf("Limite de disciplinas atingido!\n");
-            } else { 
-                add_subject(); }
+            add_subject(&total_subjects, &total_teachers);
             break;
 
         case 2:
-            list_subjects();
+            list_subjects(&total_subjects);
             break;
 
         case 3:
-            list_subject_students();
+            list_subject_students(&total_subjects);
             break;
 
         case 4:
-            update_subject();
+            update_subject(&total_subjects, &total_teachers);
             break;
 
         case 5:
@@ -55,62 +64,47 @@ void subject_module()
     }
 }
 
-void add_subject()
+void add_subject(int * subject_count, int *teachers_count)
 {
-    selected_subject = &subjects[total_subjects];
-
-    printf("Adicionando Disciplina...\n");
-    
-    read_subject_name(subject_name, MAX_STR);
-    read_subject_code(subject_code, MAX_CODE);
-    read_subject_semester(subject_semester, MAX_STR);
-
-    printf("Selecione um professor para a disciplina:\n");
-    list_people(teachers);
-    
-    scanf("%d", &selected_teacher_id);
-    getchar();
-
-    for (total_teachers = 0; teachers[total_teachers].gender; total_teachers++);
-    while ((selected_teacher_id > total_teachers) || (selected_teacher_id  <= 0)) {
-        printf("ID invalido!\n");
-        printf("Selecione um professor para a disciplina:\n");
-        list_people(teachers);
-
-        scanf("%d", &selected_teacher_id);
-        getchar();
+    if (total_subjects >= MAX_SUBJECTS) {
+        printf("Limite de disciplinas atingido!\n");
+        return;
     }
-    selected_teacher_id--;
-
+    
+    printf("Adicionando Disciplina...\n");
     Subject new_subject;
-    strncpy(new_subject.name, subject_name, MAX_STR);
-    strncpy(new_subject.code, subject_code, MAX_CODE);
-    new_subject.semester = atoi(subject_semester);
-    new_subject.teacher = teachers[selected_teacher_id];
+    
+    read_subject_name(new_subject.name, MAX_STR);
+    read_subject_code(new_subject.code, MAX_CODE);
+    read_subject_semester(new_subject.semester, MAX_STR);
+    select_teacher(&new_subject.teacher, teachers_count);
+
+    Subject *selected_subject = &subjects[(*subject_count)];
     *selected_subject = new_subject;
+    (*subject_count)++;
+    printf("Nova disciplina adicionada com sucesso!\n");
 }
 
-void update_subject()
+void update_subject(int *subjects_count, int *teachers_count)
 {
     int option = 1;
 
     printf("Atualizando Disciplina...\n");
-    list_subjects();
+    list_subjects(subjects_count);
 
-    printf("Digite o ID da Disciplina que deseja atualizar:\n");
+    printf("\nDigite o ID da Disciplina que deseja atualizar:\n");
     scanf("%d", &selected_subject_id);
     getchar();
-    for (total_subjects = 0; subjects[total_subjects].semester; total_subjects++);
-    while ((selected_subject_id > total_subjects) || (selected_subject_id  <= 0)) {
+    while ((selected_subject_id > *subjects_count) || (selected_subject_id  <= 0)) {
         printf("ID invalido!\n");
         printf("Digite o ID da Disciplina que deseja atualizar:\n");
-        list_subjects();
+        list_subjects(subjects_count);
         scanf("%d", &selected_subject_id);
         getchar();
     }
     selected_subject_id--;
 
-    selected_subject = &subjects[selected_subject_id];
+    Subject *selected_subject = &subjects[selected_subject_id];
     while (option)
     {
         printf("Atualizando disciplina %s...\n", selected_subject->name);
@@ -127,52 +121,34 @@ void update_subject()
 
         switch (option)
         {
-        case 0:
-            printf("Saindo de Atualizar disciplina %s...\n", selected_subject->name);
-            return;
+            case 0:
+                printf("Saindo de Atualizar disciplina %s...\n", selected_subject->name);
+                return;
 
-        case 1:
-            read_subject_name(subject_name, MAX_STR);
-            strncpy(selected_subject->name, subject_name, MAX_STR);
-            break;
+            case 1:
+                read_subject_name(selected_subject->name, MAX_STR);
+                break;
 
-        case 2:
-            read_subject_code(subject_code, MAX_CODE);
-            strncpy(selected_subject->code, subject_code, MAX_STR);
-            break;
+            case 2:
+                read_subject_code(selected_subject->code, MAX_CODE);
+                break;
 
-        case 3:
-            read_subject_semester(subject_semester, MAX_STR);
-            selected_subject->semester = atoi(subject_semester);
-            break;
+            case 3:
+                read_subject_semester(selected_subject->semester, MAX_STR);
+                break;
 
-        case 4:
-            printf("Selecione um professor para a disciplina:\n");
-            list_people(teachers);
-            scanf("%d", &selected_teacher_id);
-            getchar();
+            case 4:
+                select_teacher(&selected_subject->teacher, teachers_count);
+                break;
 
-            for (total_teachers = 0; teachers[total_teachers].gender; total_teachers++);
-            while ((selected_teacher_id > total_teachers) || (selected_teacher_id  <= 0)) {
-                printf("ID invalido!\n");
-                printf("Selecione um professor para a disciplina:\n");
-                list_people(teachers);
-                scanf("%d", &selected_teacher_id);
-                getchar();
-            }
-            selected_teacher_id--;
+            case 5:
+                break;
 
-            selected_subject->teacher = teachers[selected_teacher_id];
-            break;
+            case 6:
+                break;
 
-        case 5:
-            break;
-
-        case 6:
-            break;
-
-        default:
-            printf("Opção Inválida!\n");
+            default:
+                printf("Opção Inválida!\n");
         }
     }
 }

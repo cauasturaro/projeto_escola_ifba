@@ -3,6 +3,14 @@
 #include <stdlib.h>
 #include "utils.h"
 
+void string_to_uppercase (char str[]) {
+    for (int i = 0; str[i] != '\0'; i++) {
+        if ((str[i] >= 'a') && (str[i] <= 'z')) {
+            str[i] = str[i] - 'a' + 'A'; // to_uppercase(str[i]); msm coisa
+        }
+    }
+}
+
 int validate_name(char name[])
 {
     for (int i = 0; name[i] != '\0'; i++)
@@ -16,14 +24,6 @@ int validate_name(char name[])
     return 1;
 }
 
-void string_to_uppercase (char str[]) {
-    for (int i = 0; str[i] != '\0'; i++) {
-        if ((str[i] >= 'a') && (str[i] <= 'z')) {
-            str[i] = str[i] - 'a' + 'A'; // to_uppercase(str[i]); msm coisa
-        }
-    }
-}
-
 int validate_numeric_string(char numbers[]) {
     for (int i = 0; numbers[i] != '\0'; i++) {
         if (numbers[i] < '0' || numbers[i] > '9') // ## dá p fazer um isdigit(c)? return 1 : return 0;
@@ -35,15 +35,14 @@ int validate_numeric_string(char numbers[]) {
 }
 
 int validate_code(char code[], int max_size) {
-    int i = 0;
     int max = max_size - 2;
 
     int size = strlen(code);
     
     if (size != max) { return 0; }
     
-    char letters[(max/2) + 1];
-    char numbers[(max/2) + 1];
+    char *letters = malloc((max/2) + 1);
+    char *numbers= malloc((max/2) + 1);
 
     for(int i = 0; i < max; i++) {
         if (i < (max/2)) {
@@ -100,5 +99,4 @@ void read_subject_semester (char subject_semester[], int tam_str) {
         fgets(subject_semester, tam_str, stdin);
         subject_semester[strcspn(subject_semester, "\n")] = '\0';
     }
-    printf("chegou: %s", subject_semester);
 }
