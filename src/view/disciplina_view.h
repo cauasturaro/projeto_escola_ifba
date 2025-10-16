@@ -6,6 +6,7 @@
 #include "../model/disciplina.h"
 #include "../controller/disciplina_controller.h"
 #include "../view/menu.h"
+#include "../view/view.h"
 
 void subject_module();
 void list_subjects(int *subject_count);

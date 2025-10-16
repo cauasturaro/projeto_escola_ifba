@@ -1,25 +1,14 @@
 #include <stdio.h>
 #include "pessoa_view.h"
 
-void list_people(const char *titulo, Person array[], int total)
-{
-    printf("\n%s\n", titulo);
-    for (int i = 0; i < total; i++)
-    {
-        printf("> ID: %03d | Matricula: %s | Nome: %s | Genero: %c | Data de Nascimento: %s | CPF: %s\n",
-               i, array[i].registration, array[i].name, array[i].gender,
-               array[i].birth, array[i].CPF);
-    }
-}
-
 void list_students()
 {
-    list_people("------------Estudantes------------", students, total_students);
+    list("------------Estudantes------------", students, total_students, sizeof(Person), personAdapter);
 }
 
 void list_teachers()
 {
-    list_people("------------Professores------------", teachers, total_teachers);
+    list("------------Professores------------", teachers, total_teachers, sizeof(Person), personAdapter);
 }
 
 void students_module()

@@ -1,3 +1,5 @@
+#include <stdio.h>
+
 #include "pessoa.h"
 
 Person students[MAX_PEOPLE];

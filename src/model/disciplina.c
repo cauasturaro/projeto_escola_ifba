@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include "./disciplina.h"
 
 Subject subjects[MAX_SUBJECTS];
