@@ -6,6 +6,7 @@
 #include "../model/pessoa.h"
 #include "../controller/pessoa_controller.h"
 #include "../view/menu.h"
+#include "../view/view.h"
 
 void list_students();
 void list_teachers();

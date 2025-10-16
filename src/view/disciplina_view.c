@@ -9,12 +9,7 @@ void list_subjects(int *subject_count)
         return;
     }
 
-    printf("\n------------Disciplinas------------\n");
-    for (int i = 0; i < (*subject_count); i++)
-    {
-        printf("> ID: %03d | Codigo: %s | Nome: %s | Semestre: %s | Professor: %s\n",
-               i + 1, subjects[i].code, subjects[i].name, subjects[i].semester, subjects[i].teacher.name);
-    }
+    list("------------Disciplinas------------", subjects, total_subjects, sizeof(Subject), subjectAdapter);
 }
 
 void list_subject_students(Subject *selected_subject, int students_count)

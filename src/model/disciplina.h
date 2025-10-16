@@ -4,6 +4,7 @@
 #define DISCIPLINA_H
 
 #include "./pessoa.h"
+#include "../model/adapter.h"
 
 #define MAX_STR 20
 #define MAX_CODE 8 // Aceita, no máximo, 6 caracteres --> esperado - 2 ('\n' e '\0')
@@ -25,5 +26,7 @@ extern int total_subjects;
 
 extern int selected_subject_id;
 extern int selected_teacher_id;
+
+extern Adapter subjectAdapter;
 
 #endif
