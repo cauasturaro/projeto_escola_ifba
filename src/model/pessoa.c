@@ -39,8 +39,8 @@ const char *person_get_sort_field(const void *obj, SortField field)
 void person_print(const void *obj, int id)
 {
     const Person *p = (Person *)obj;
-    printf("> ID: %d | Matricula: %s | Nome: %s | Genero: %c | Data de Nascimento: %s | CPF: %s\n",
-           id, p->name, p->registration, p->gender, p->birth, p->CPF);
+    printf("> ID: %d | Matrícula: %s | Nome: %s | Genero: %c | Data de Nascimento: %s | CPF: %s\n",
+           id, p->registration, p->name, p->gender, p->birth, p->CPF);
 }
 
 ListagemAdapter personListagemAdapter = {

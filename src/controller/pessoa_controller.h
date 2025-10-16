@@ -3,8 +3,10 @@
 #ifndef PESSOA_CONTROLLER_H
 #define PESSOA_CONTROLLER_H
 
-#include "pessoa.h"
-#include "controller.h"
+#include "../model/pessoa.h"
+#include "../view/pessoa_view.h"
+#include "../controller/controller.h"
+#include "../utils/utils.h"
 
 void register_person(int type);
 void update_person(Person array[], int total, int type);
