@@ -3,7 +3,7 @@
 #ifndef PESSOA_H
 #define PESSOA_H
 
-#include "../model/adapter.h"
+#include "model.h"
 
 #define SIZE_REGISTRATION 12
 #define SIZE_NAME 100

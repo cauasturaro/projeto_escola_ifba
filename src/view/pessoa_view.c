@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include "pessoa_view.h"
 
 void list_students()
@@ -79,4 +78,8 @@ void teachers_module()
             break;
         }
     }
+}
+
+void buscar_pessoa()
+{
 }

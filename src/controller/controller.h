@@ -4,9 +4,14 @@
 #include <stdio.h>
 #include <string.h>
 #include "../model/pessoa.h"
-#include "../model/disciplina.h"
 #include "../model/adapter.h"
-#include "../controller/controller.h"
+
+#include "../view/view.h"
+#include "../view/disciplina_view.h"
+#include "../view/pessoa_view.h"
+#include "../view/menu.h"
+
+#include "../utils/utils.h"
 
 void remover(void *array, int *total, size_t element_size);
 // array de elementos, ponteiro de total de objetos no array, tamanho de cada elemento

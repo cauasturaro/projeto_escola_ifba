@@ -3,8 +3,7 @@
 #ifndef DISCIPLINA_H
 #define DISCIPLINA_H
 
-#include "./pessoa.h"
-#include "../model/adapter.h"
+#include "model.h"
 
 #define MAX_STR 20
 #define MAX_CODE 8 // Aceita, no máximo, 6 caracteres --> esperado - 2 ('\n' e '\0')

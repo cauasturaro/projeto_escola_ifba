@@ -3,13 +3,7 @@
 #ifndef DISCIPLINA_CONTROLLER_H
 #define DISCIPLINA_CONTROLLER_H
 
-#include "../model/disciplina.h"
-#include "../view/view.h"
-#include "../view/disciplina_view.h"
-#include "../view/pessoa_view.h"
-#include "../view/menu.h"
-#include "../controller/controller.h"
-#include "../utils/utils.h"
+#include "controller.h"
 
 void subject_module();
 void add_subject(int *subject_count, int *teachers_count);

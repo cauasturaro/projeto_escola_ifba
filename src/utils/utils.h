@@ -4,6 +4,7 @@
 #define UTILS_H
 
 #include "../model/pessoa.h"
+#include "../view/pessoa_view.h"
 
 void string_to_uppercase(char str[]);
 void clear_screen();
