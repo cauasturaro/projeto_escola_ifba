@@ -9,7 +9,7 @@ void list_subjects(int *subject_count)
         return;
     }
 
-    list("------------Disciplinas------------", subjects, total_subjects, sizeof(Subject), subjectAdapter);
+    list("------------Disciplinas------------", subjects, total_subjects, sizeof(Subject), subjectListagemAdapter);
 }
 
 void list_subject_students(Subject *selected_subject, int students_count)
@@ -82,17 +82,64 @@ void subject_module()
                 list_subject_students(selected_subject, selected_subject->students_count);
             }
             break;
-
         case 4:
-            update_subject(&total_subjects, &total_teachers);
+            listar_ordenado_subject_module();
             break;
 
         case 5:
+            update_subject(&total_subjects, &total_teachers);
+            break;
+
+        case 6:
             remover_subject();
             break;
 
         default:
             printf("Opção inválida!\n");
+            break;
+        }
+    }
+}
+
+void listar_ordenado_subject_module()
+{
+    int option = 1;
+    while (option)
+    {
+        printf("Escolha a opcao de filtragem:\n");
+        printf("1 - Nome\n");
+        printf("2 - Codigo\n");
+        printf("3 - Semestre\n");
+        printf("4 - Quantidade de Alunos\n");
+        printf("0 - Sair\n");
+        scanf("%d", &option);
+        getchar();
+
+        switch (option)
+        {
+        case 0:
+            printf("Saindo de Listar Filtado...\n");
+            return;
+
+        case 1:
+            ordenar(subjects, total_subjects, sizeof(Subject), subjectSortAdapter, SORT_BY_NAME);
+            list("---- Dados Filtrados por Nome ----", subjects, total_subjects, sizeof(Subject), subjectListagemAdapter);
+            break;
+
+        case 2:
+            ordenar(subjects, total_subjects, sizeof(Subject), subjectSortAdapter, SORT_BY_CODE);
+            list("---- Dados Filtrados por Codigo ----", subjects, total_subjects, sizeof(Subject), subjectListagemAdapter);
+            break;
+        case 3:
+            ordenar(subjects, total_subjects, sizeof(Subject), subjectSortAdapter, SORT_BY_SEMESTER);
+            list("---- Dados Filtrados por Semestre ----", subjects, total_subjects, sizeof(Subject), subjectListagemAdapter);
+            break;
+        case 4:
+            ordenar(subjects, total_subjects, sizeof(Subject), subjectSortAdapter, SORT_BY_STUDENT_COUNT);
+            list("---- Dados Filtrados por Quantidade de Alunos ----", subjects, total_subjects, sizeof(Subject), subjectListagemAdapter);
+            break;
+        default:
+            printf("Opcao invalida!\n");
             break;
         }
     }

@@ -3,16 +3,14 @@
 #ifndef PESSOA_VIEW_H
 #define PESSOA_VIEW_H
 
-#include "../model/pessoa.h"
-#include "../controller/controller.h"
-#include "../controller/pessoa_controller.h"
-#include "../view/menu.h"
-#include "../view/view.h"
+#include "view.h"
 
 void list_students();
 void list_teachers();
 
 void students_module();
 void teachers_module();
+
+void listar_ordenado_people_module(int tipo);
 
 #endif

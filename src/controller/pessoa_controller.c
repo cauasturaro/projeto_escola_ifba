@@ -1,5 +1,3 @@
-#include <stdio.h>
-#include <string.h>
 #include "pessoa_controller.h"
 
 void register_person(int type)
@@ -117,6 +115,8 @@ void update_person(Person array[], int total, int type)
 void remover_student()
 {
     list_students();
+    printf("\n");
+    printf("Digite o ID do aluno a ser removido: ");
     remover((void *)students, &total_students, sizeof(Person));
 }
 
@@ -124,5 +124,6 @@ void remover_teacher()
 {
     list_teachers();
     printf("\n");
+    printf("Digite o ID do professor a ser removido: ");
     remover((void *)teachers, &total_teachers, sizeof(Person));
 }

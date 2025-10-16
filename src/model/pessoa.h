@@ -3,7 +3,7 @@
 #ifndef PESSOA_H
 #define PESSOA_H
 
-#include "../model/adapter.h"
+#include "model.h"
 
 #define SIZE_REGISTRATION 12
 #define SIZE_NAME 100
@@ -13,8 +13,8 @@
 
 typedef struct
 {
-    char registration[SIZE_REGISTRATION];
     char name[SIZE_NAME];
+    char registration[SIZE_REGISTRATION];
     char gender;
     char birth[SIZE_BIRTH];
     char CPF[SIZE_CPF];
@@ -25,6 +25,7 @@ extern Person teachers[MAX_PEOPLE];
 extern int total_students;
 extern int total_teachers;
 
-extern Adapter personAdapter;
+extern ListagemAdapter personListagemAdapter;
+extern SortAdapter personSortAdapter;
 
 #endif
