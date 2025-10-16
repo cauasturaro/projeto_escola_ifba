@@ -5,5 +5,5 @@
 
 void register_person(int type);
 void update_person(Person array[], int total, int type);
-
+// TIPO 1 = STUDENT | TIPO 2 = TEACHER
 #endif

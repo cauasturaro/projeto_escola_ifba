@@ -6,4 +6,7 @@
 void list_students();
 void list_teachers();
 
+void students_module();
+void teachers_module();
+
 #endif

@@ -1,7 +1,9 @@
 #include <stdio.h>
 #include "menu.h"
 
-#include "disciplina_controller.h"
+#include "../view/disciplina_view.h"
+#include "../view/pessoa_view.h"
+
 #include "pessoa_controller.h"
 #include "pessoa_view.h"
 #include "utils.h"
@@ -18,25 +20,15 @@ int main()
         {
         case 1:
             clear_screen();
-            register_person(1);
-            list_students();
-
+            students_module();
+            pause_view();
             break;
         case 2:
             clear_screen();
-            register_person(2);
+            teachers_module();
+            pause_view();
             break;
         case 3:
-            clear_screen();
-            list_students();
-            pause_view();
-            break;
-        case 4:
-            clear_screen();
-            list_teachers();
-            pause_view();
-            break;
-        case 5:
             clear_screen();
             subject_module();
             pause_view();

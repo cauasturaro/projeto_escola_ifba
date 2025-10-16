@@ -1,16 +1,53 @@
 #include <stdio.h>
 #include "menu.h"
 #include "../utils/utils.h"
+#include "../model/disciplina.h"
+#include "../model/pessoa.h"
 
 void show_menu()
 {
     clear_screen();
     printf("\n--- MENU PRINCIPAL ---\n");
-    printf("1 - Cadastrar estudante\n");
-    printf("2 - Cadastrar professor\n");
-    printf("3 - Listar estudantes\n");
-    printf("4 - Listar professores\n");
-    printf("5 - Modulo disciplina\n");
+    printf("1 - Módulo Aluno\n");
+    printf("2 - Módulo Professor\n");
+    printf("3 - Módulo Disciplina\n");
     printf("0 - Sair\n");
     printf("Escolha uma opcao: ");
+}
+
+void subjects_menu(int *option)
+{
+    printf("\n--- MENU DISCIPLINAS ---\n");
+    printf("1 - Adicionar Disciplina\n");
+    printf("2 - Listar Disciplinas\n");
+    printf("3 - Listar Alunos da Disciplina\n");
+    printf("4 - Atualizar Disciplina\n");
+    printf("5 - Remover Disciplina\n");
+    printf("0 - Sair\n");
+    scanf("%d", option);
+    getchar();
+}
+
+void students_menu(int *option)
+{
+    printf("\n--- MENU ALUNOS ---\n");
+    printf("1 - Adicionar Aluno\n");
+    printf("2 - Listar Alunos\n");
+    printf("3 - Atualizar Aluno\n");
+    printf("4 - Remover Aluno\n");
+    printf("0 - Sair\n");
+    scanf("%d", option);
+    getchar();
+}
+
+void teachers_menu(int *option)
+{
+    printf("\n--- MENU PROFESSORES ---\n");
+    printf("1 - Adicionar Professor\n");
+    printf("2 - Listar Professores\n");
+    printf("3 - Atualizar Professor\n");
+    printf("4 - Remover Professor\n");
+    printf("0 - Sair\n");
+    scanf("%d", option);
+    getchar();
 }
