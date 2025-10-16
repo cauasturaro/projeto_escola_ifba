@@ -33,6 +33,11 @@ int main()
             subject_module();
             pause_view();
             break;
+        case 4:
+            clear_screen();
+            birthdays_by_month();
+            pause_view();
+            break;
         case 0:
             clear_screen();
             printf("Saindo...\n");
@@ -41,6 +46,6 @@ int main()
             printf("Opcao invalida!\n");
         }
     }
-
+    
     return 0;
 }

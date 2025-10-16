@@ -15,4 +15,6 @@ void update_person(Person array[], int total, int type);
 void remover_student();
 void remover_teacher();
 
+void birthdays_by_month();
+
 #endif

@@ -8,6 +8,7 @@ void show_menu()
     printf("1 - Módulo Aluno\n");
     printf("2 - Módulo Professor\n");
     printf("3 - Módulo Disciplina\n");
+    printf("4 - Aniversariantes do mes\n");
     printf("0 - Sair\n");
     printf("Escolha uma opcao: ");
 }

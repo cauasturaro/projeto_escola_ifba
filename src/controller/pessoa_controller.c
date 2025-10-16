@@ -127,3 +127,43 @@ void remover_teacher()
     printf("Digite o ID do professor a ser removido: ");
     remover((void *)teachers, &total_teachers, sizeof(Person));
 }
+
+void birthdays_by_month(){
+    int month;
+    
+    printf("Digite o mes para ver os aniversariantes (1-12): ");
+    scanf("%d", &month);
+    
+    if(month < 1 || month > 12){
+        printf("Mes invalido.\n");
+        return;
+    }
+    
+    printf("\n=== Aniversariantes do mes %02d ===\n", month);
+    int found = 0;
+    
+    for (int i = 0; i < total_students; i++)
+    {
+        int birth_month = (students[i].birth[3] - '0') * 10 + (students[i].birth[4] - '0');
+
+        if (birth_month == month)
+        {
+            printf("Estudante: %s | Nascimento: %s\n", students[i].name, students[i].birth);
+            found = 1;
+        }
+    }
+
+    for (int i = 0; i < total_teachers; i++)
+    {
+        int birth_month = (teachers[i].birth[3] - '0') * 10 + (teachers[i].birth[4] - '0');
+
+        if (birth_month == month)
+        {
+            printf("Professor: %s | Nascimento: %s\n", teachers[i].name, teachers[i].birth);
+            found = 1;
+        }
+    }
+
+    if (!found)
+        printf("Nenhum aniversariante encontrado neste mes.\n");
+}
