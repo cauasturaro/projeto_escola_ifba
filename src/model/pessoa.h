@@ -1,7 +1,7 @@
 #ifndef PESSOA_H
 #define PESSOA_H
 
-#define SIZE_ID 12
+#define SIZE_REGISTRATION 12
 #define SIZE_NAME 100
 #define SIZE_BIRTH 11
 #define SIZE_CPF 16
@@ -9,7 +9,7 @@
 
 typedef struct
 {
-    char registration[SIZE_ID];
+    char registration[SIZE_REGISTRATION];
     char name[SIZE_NAME];
     char gender;
     char birth[SIZE_BIRTH];

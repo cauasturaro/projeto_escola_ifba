@@ -9,8 +9,8 @@ void list_people(const char *titulo, Person array[], int total)
     printf("\n%s\n", titulo);
     for (int i = 0; i < total; i++)
     {
-        printf("> ID: %s | Name: %s | Gender: %c | Birth: %s | CPF: %s\n",
-               array[i].registration, array[i].name, array[i].gender,
+        printf("> ID: %03d | Matricula: %s | Nome: %s | Genero: %c | Data de Nascimento: %s | CPF: %s\n",
+               i, array[i].registration, array[i].name, array[i].gender,
                array[i].birth, array[i].CPF);
     }
 }

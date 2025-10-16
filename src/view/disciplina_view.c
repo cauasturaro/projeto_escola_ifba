@@ -2,6 +2,7 @@
 
 #include "./disciplina_view.h"
 #include "../model/disciplina.h"
+#include "../controller/disciplina_controller.h"
 #include "../view/menu.h"
 
 void list_subjects(int *subject_count)
@@ -15,7 +16,7 @@ void list_subjects(int *subject_count)
     printf("\n------------Disciplinas------------\n");
     for (int i = 0; i < (*subject_count); i++)
     {
-        printf(">#%03d | Codigo: %s | Nome: %s | Semestre: %s | Professor: %s\n",
+        printf("> ID: %03d | Codigo: %s | Nome: %s | Semestre: %s | Professor: %s\n",
                i + 1, subjects[i].code, subjects[i].name, subjects[i].semester, subjects[i].teacher.name);
     }
 }
@@ -37,8 +38,8 @@ void list_subject_students(Subject *selected_subject, int students_count)
     printf("\n------------Alunos de %s------------\n", selected_subject->name);
     for (int i = 0; i < students_count && students[i].gender; i++)
     {
-        printf("> ID: %s | Nome: %s | Genero: %c | Data de Nascimento: %s | CPF: %s\n",
-               selected_subject->students[i].registration, selected_subject->students[i].name, selected_subject->students[i].gender,
+        printf("> ID: %03d | Matricula: %s | Nome: %s | Genero: %c | Data de Nascimento: %s | CPF: %s\n",
+               i + 1, selected_subject->students[i].registration, selected_subject->students[i].name, selected_subject->students[i].gender,
                selected_subject->students[i].birth, selected_subject->students[i].CPF);
     }
 }
