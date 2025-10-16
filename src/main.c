@@ -46,6 +46,6 @@ int main()
             printf("Opcao invalida!\n");
         }
     }
-    
+
     return 0;
 }

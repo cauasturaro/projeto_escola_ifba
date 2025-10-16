@@ -3,7 +3,6 @@
 
 void show_menu()
 {
-    clear_screen();
     printf("\n--- MENU PRINCIPAL ---\n");
     printf("1 - Módulo Aluno\n");
     printf("2 - Módulo Professor\n");
