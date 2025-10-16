@@ -3,9 +3,6 @@
 #include <stdlib.h>
 
 #include "disciplina_controller.h"
-#include "../view/disciplina_view.h"
-#include "../model/disciplina.h"
-#include "../view/menu.h"
 
 void select_teacher(Person *subject_teacher, int *teachers_count)
 {

@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <string.h>
 #include "pessoa_controller.h"
-#include "../utils/utils.h"
 
 void register_person(int type)
 {
@@ -46,7 +45,7 @@ void register_person(int type)
 
 void update_person(Person array[], int total, int type)
 {
-    char id[SIZE_ID];
+    char id[SIZE_REGISTRATION];
     printf("Digite a matricula para atualizacao: ");
     scanf("%s", id);
     getchar();

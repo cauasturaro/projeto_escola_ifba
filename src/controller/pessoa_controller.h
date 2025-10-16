@@ -1,7 +1,10 @@
-#ifndef PESSOA_CONTROLLER_h
+// FUNCIONALIDADES DE CONTROLE DE PESSOAS
+
+#ifndef PESSOA_CONTROLLER_H
 #define PESSOA_CONTROLLER_H
 
 #include "../model/pessoa.h"
+#include "../utils/utils.h"
 
 void register_person(int type);
 void update_person(Person array[], int total, int type);

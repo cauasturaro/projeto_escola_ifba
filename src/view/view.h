@@ -1,0 +1,6 @@
+// FUNCIONALIDADES GLOBAIS DE VISUALIZAÇÃO
+
+#ifndef VIEW_H
+#define VIEW_H
+
+#endif

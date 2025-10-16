@@ -1,9 +1,5 @@
 #include <stdio.h>
-
 #include "./disciplina_view.h"
-#include "../model/disciplina.h"
-#include "../controller/disciplina_controller.h"
-#include "../view/menu.h"
 
 void list_subjects(int *subject_count)
 {

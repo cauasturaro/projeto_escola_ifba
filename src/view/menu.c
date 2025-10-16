@@ -1,8 +1,5 @@
 #include <stdio.h>
 #include "menu.h"
-#include "../utils/utils.h"
-#include "../model/disciplina.h"
-#include "../model/pessoa.h"
 
 void show_menu()
 {

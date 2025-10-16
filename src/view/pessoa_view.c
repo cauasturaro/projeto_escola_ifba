@@ -1,8 +1,5 @@
 #include <stdio.h>
 #include "pessoa_view.h"
-#include "../view/menu.h"
-#include "../model/pessoa.h"
-#include "../controller/pessoa_controller.h"
 
 void list_people(const char *titulo, Person array[], int total)
 {

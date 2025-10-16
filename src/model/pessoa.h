@@ -1,3 +1,5 @@
+// PESSOA (aluno ou professor) MODEL
+
 #ifndef PESSOA_H
 #define PESSOA_H
 
