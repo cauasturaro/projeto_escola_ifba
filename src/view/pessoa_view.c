@@ -2,12 +2,12 @@
 
 void list_students()
 {
-    list("------------Estudantes------------", students, total_students, sizeof(Person), personListagemAdapter);
+    list("================ ESTUDANTES ================", students, total_students, sizeof(Person), personListagemAdapter);
 }
 
 void list_teachers()
 {
-    list("------------Professores------------", teachers, total_teachers, sizeof(Person), personListagemAdapter);
+    list("================ PROFESSORES ================", teachers, total_teachers, sizeof(Person), personListagemAdapter);
 }
 
 static Person *entidade_atual = NULL;
@@ -31,6 +31,7 @@ void students_module()
 
         case 2:
             list_students();
+            pause_view();
             break;
 
         case 3:
@@ -38,6 +39,7 @@ void students_module()
             break;
 
         case 4:
+            list_students();
             update_person(students, total_students, 1);
             break;
 
@@ -70,6 +72,7 @@ void teachers_module()
 
         case 2:
             list_teachers();
+            pause_view();
             break;
 
         case 3:
@@ -77,6 +80,7 @@ void teachers_module()
             break;
 
         case 4:
+            list_teachers();
             update_person(teachers, total_teachers, 2);
             break;
 
@@ -96,6 +100,7 @@ void listar_ordenado_people_module(int tipo)
     int option = 1;
     while (option)
     {
+        clear_screen();
         printf("Escolha a opcao de filtragem:\n");
         printf("1 - Nome\n");
         printf("2 - Genero\n");
@@ -126,24 +131,29 @@ void listar_ordenado_people_module(int tipo)
 
         case 1:
             ordenar(entidade_atual, total_entidade_atual, sizeof(Person), personSortAdapter, SORT_BY_NAME);
-            list("---- Dados Filtrados por Nome ----", entidade_atual, total_entidade_atual, sizeof(Person), personListagemAdapter);
+            list("============ DADOS FILTRADOS POR NOME ============", entidade_atual, total_entidade_atual, sizeof(Person), personListagemAdapter);
+            pause_view();
             break;
 
         case 2:
             ordenar(entidade_atual, total_entidade_atual, sizeof(Person), personSortAdapter, SORT_BY_GENDER);
-            list("---- Dados Filtrados por Genero ----", entidade_atual, total_entidade_atual, sizeof(Person), personListagemAdapter);
+            list("============ DADOS FILTRADOS POR GENERO ============", entidade_atual, total_entidade_atual, sizeof(Person), personListagemAdapter);
+            pause_view();
             break;
         case 3:
             ordenar(entidade_atual, total_entidade_atual, sizeof(Person), personSortAdapter, SORT_BY_BIRTH);
-            list("---- Dados Filtrados por Data de Nascimento ----", entidade_atual, total_entidade_atual, sizeof(Person), personListagemAdapter);
+            list("============ DADOS FILTRADOS POR DATA DE NASCIMENTO ============", entidade_atual, total_entidade_atual, sizeof(Person), personListagemAdapter);
+            pause_view();
             break;
         case 4:
             ordenar(entidade_atual, total_entidade_atual, sizeof(Person), personSortAdapter, SORT_BY_REGISTRATION);
-            list("---- Dados Filtrados por Matricula ----", entidade_atual, total_entidade_atual, sizeof(Person), personListagemAdapter);
+            list("============ DADOS FILTRADOS POR MATRICULA ============", entidade_atual, total_entidade_atual, sizeof(Person), personListagemAdapter);
+            pause_view();
             break;
         case 5:
             ordenar(entidade_atual, total_entidade_atual, sizeof(Person), personSortAdapter, SORT_BY_STUDENT_CPF);
-            list("---- Dados Filtrados por CPF ----", entidade_atual, total_entidade_atual, sizeof(Person), personListagemAdapter);
+            list("============ DADOS FILTRADOS POR CPF ============", entidade_atual, total_entidade_atual, sizeof(Person), personListagemAdapter);
+            pause_view();
             break;
         default:
             printf("Opcao invalida!\n");

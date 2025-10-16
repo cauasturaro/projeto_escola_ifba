@@ -9,4 +9,6 @@ void list(const char *titulo, void *array, int total, size_t element_size, Lista
         void *obj = (char *)array + i * element_size;
         adapter.print(obj, i);
     }
+
+    printf("\n%s\n", titulo);
 }
