@@ -25,6 +25,6 @@ extern Person teachers[MAX_PEOPLE];
 extern int total_students;
 extern int total_teachers;
 
-extern Adapter personAdapter;
+extern ListagemAdapter personAdapter;
 
 #endif

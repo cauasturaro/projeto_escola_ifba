@@ -21,7 +21,7 @@
 
 #include "menu.h"
 
-void list(const char *titulo, void *array, int total, size_t element_size, Adapter adapter);
+void list(const char *titulo, void *array, int total, size_t element_size, ListagemAdapter adapter);
 // Título da lista, array de objetos (students, teacher, subjects), número total de elementos,
 // tamanho de cada elemento, adapter (que é o adapter entre person e subjects)
 

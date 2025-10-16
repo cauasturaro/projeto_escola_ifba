@@ -17,6 +17,6 @@ void person_print(const void *obj, int id)
            id, p->name, p->registration, p->gender, p->birth, p->CPF);
 }
 
-Adapter personAdapter = {
+ListagemAdapter personAdapter = {
     .getId = person_get_id,
     .print = person_print};

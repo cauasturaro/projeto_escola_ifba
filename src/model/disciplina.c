@@ -20,6 +20,6 @@ void subject_print(const void *obj, int id)
     printf("> ID: %d | Código: %s | Nome: %s | Semestre: %s | Professor: %s\n", id, p->code, p->name, p->semester, p->teacher.name);
 }
 
-Adapter subjectAdapter = {
+ListagemAdapter subjectAdapter = {
     .getId = subject_get_id,
     .print = subject_print};

@@ -26,6 +26,6 @@ extern int total_subjects;
 extern int selected_subject_id;
 extern int selected_teacher_id;
 
-extern Adapter subjectAdapter;
+extern ListagemAdapter subjectAdapter;
 
 #endif

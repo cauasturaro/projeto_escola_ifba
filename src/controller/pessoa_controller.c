@@ -124,3 +124,19 @@ void remover_teacher()
     printf("\n");
     remover((void *)teachers, &total_teachers, sizeof(Person));
 }
+
+void ordenar_people(Person array[], int total)
+{
+    for (int i = 0; i < total - 1; i++)
+    {
+        for (int j = 0; j < total - i - 1; j++)
+        {
+            if (strcmp(array[j].name, array[j + 1].name) > 0)
+            {
+                Person temp = array[j];
+                array[j] = array[j + 1];
+                array[j + 1] = temp;
+            }
+        }
+    }
+}
