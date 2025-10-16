@@ -36,7 +36,7 @@ void students_module()
             break;
 
         case 4:
-            printf("Removendo Aluno...\n");
+            remover_student();
             break;
 
         default:
@@ -71,7 +71,7 @@ void teachers_module()
             break;
 
         case 4:
-            printf("Removendo Professor...\n");
+            remover_teacher();
             break;
 
         default:

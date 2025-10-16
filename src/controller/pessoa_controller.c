@@ -113,3 +113,16 @@ void update_person(Person array[], int total, int type)
         }
     } while (option != 0);
 }
+
+void remover_student()
+{
+    list_students();
+    remover((void *)students, &total_students, sizeof(Person));
+}
+
+void remover_teacher()
+{
+    list_teachers();
+    printf("\n");
+    remover((void *)teachers, &total_teachers, sizeof(Person));
+}

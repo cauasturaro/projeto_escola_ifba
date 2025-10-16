@@ -88,7 +88,7 @@ void subject_module()
             break;
 
         case 5:
-            printf("Removendo Disciplina...\n");
+            remover_subject();
             break;
 
         default:
