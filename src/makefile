@@ -27,7 +27,7 @@ else
 	MKDIR_P = mkdir -p
 endif
 
-TARGET = $(OUTPUT)/program
+TARGET = ./program
 
 SRC = $(wildcard *.c controller/*.c model/*.c view/*.c utils/*.c)
 OBJ = $(patsubst %.c,$(OUTPUT)/%.o,$(SRC))
