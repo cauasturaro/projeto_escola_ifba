@@ -30,8 +30,9 @@ void students_menu(int *option)
     printf("\n--- MENU ALUNOS ---\n");
     printf("1 - Adicionar Aluno\n");
     printf("2 - Listar Alunos\n");
-    printf("3 - Atualizar Aluno\n");
-    printf("4 - Remover Aluno\n");
+    printf("3 - Listar Alunos Filtrados\n");
+    printf("4 - Atualizar Aluno\n");
+    printf("5 - Remover Aluno\n");
     printf("0 - Sair\n");
     scanf("%d", option);
     getchar();
@@ -42,8 +43,9 @@ void teachers_menu(int *option)
     printf("\n--- MENU PROFESSORES ---\n");
     printf("1 - Adicionar Professor\n");
     printf("2 - Listar Professores\n");
-    printf("3 - Atualizar Professor\n");
-    printf("4 - Remover Professor\n");
+    printf("3 - Listar Professores Filtrados\n");
+    printf("5 - Atualizar Professor\n");
+    printf("6 - Remover Professor\n");
     printf("0 - Sair\n");
     scanf("%d", option);
     getchar();

@@ -6,6 +6,5 @@
 #include <stdio.h>
 
 #include "adapter.h"
-#include "pessoa.h"
 
 #endif

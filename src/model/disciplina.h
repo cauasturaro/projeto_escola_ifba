@@ -3,6 +3,7 @@
 #ifndef DISCIPLINA_H
 #define DISCIPLINA_H
 
+#include "./pessoa.h"
 #include "model.h"
 
 #define MAX_STR 20
@@ -26,6 +27,7 @@ extern int total_subjects;
 extern int selected_subject_id;
 extern int selected_teacher_id;
 
-extern ListagemAdapter subjectAdapter;
+extern ListagemAdapter subjectListagemAdapter;
+extern SortAdapter subjectSortAdapter;
 
 #endif

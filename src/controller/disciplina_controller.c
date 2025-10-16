@@ -245,5 +245,6 @@ void remover_subject()
 {
     list_subjects(&total_subjects);
     printf("\n");
+    printf("Digite o ID da disciplina a ser removida: ");
     remover((void *)subjects, &total_subjects, sizeof(Subject));
 }

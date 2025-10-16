@@ -3,6 +3,7 @@
 #ifndef PESSOA_CONTROLLER_H
 #define PESSOA_CONTROLLER_H
 
+#include "pessoa.h"
 #include "controller.h"
 
 void register_person(int type);

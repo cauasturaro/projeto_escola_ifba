@@ -10,8 +10,8 @@
 
 int main()
 {
-    int opcao;
-    do
+    int opcao = 1;
+    while (opcao)
     {
         show_menu();
         scanf("%d", &opcao);
@@ -40,7 +40,7 @@ int main()
         default:
             printf("Opcao invalida!\n");
         }
-    } while (opcao != 0);
+    }
 
     return 0;
 }

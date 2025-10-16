@@ -1,4 +1,8 @@
 #include "disciplina.h"
+#include <string.h>
+#include <stdlib.h>
+#include "utils.h"
+#include "pessoa_utils.h"
 
 int validate_code(char code[], int max_size)
 {

@@ -12,4 +12,6 @@ void pause_view();
 
 int validate_numeric_string(char numbers[]);
 
+void ordenar(void *array, int total, size_t element_size, SortAdapter adapter, SortField field);
+
 #endif

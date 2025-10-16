@@ -11,4 +11,6 @@ void list_teachers();
 void students_module();
 void teachers_module();
 
+void listar_ordenado_people_module(int tipo);
+
 #endif

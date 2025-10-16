@@ -115,6 +115,8 @@ void update_person(Person array[], int total, int type)
 void remover_student()
 {
     list_students();
+    printf("\n");
+    printf("Digite o ID do aluno a ser removido: ");
     remover((void *)students, &total_students, sizeof(Person));
 }
 
@@ -122,21 +124,6 @@ void remover_teacher()
 {
     list_teachers();
     printf("\n");
+    printf("Digite o ID do professor a ser removido: ");
     remover((void *)teachers, &total_teachers, sizeof(Person));
-}
-
-void ordenar_people(Person array[], int total)
-{
-    for (int i = 0; i < total - 1; i++)
-    {
-        for (int j = 0; j < total - i - 1; j++)
-        {
-            if (strcmp(array[j].name, array[j + 1].name) > 0)
-            {
-                Person temp = array[j];
-                array[j] = array[j + 1];
-                array[j + 1] = temp;
-            }
-        }
-    }
 }

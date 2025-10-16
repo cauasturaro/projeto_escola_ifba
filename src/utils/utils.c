@@ -40,3 +40,20 @@ int validate_numeric_string(char numbers[])
     }
     return 1;
 }
+
+static SortAdapter current_sort_adapter;
+static SortField current_field;
+
+int comparar_entidades(const void *a, const void *b)
+{
+    const char *v1 = current_sort_adapter.get_field(a, current_field);
+    const char *v2 = current_sort_adapter.get_field(b, current_field);
+    return strcmp(v1, v2);
+}
+
+void ordenar(void *array, int total, size_t element_size, SortAdapter adapter, SortField field)
+{
+    current_sort_adapter = adapter;
+    current_field = field;
+    qsort(array, total, element_size, comparar_entidades);
+}

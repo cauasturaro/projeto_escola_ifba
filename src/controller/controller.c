@@ -4,7 +4,6 @@ void remover(void *array, int *total, size_t element_size)
 {
 
     int id_remover;
-    printf("Digite o ID do aluno a ser removido: ");
     scanf("%d", &id_remover);
 
     if (id_remover < 0 || id_remover >= *total)
