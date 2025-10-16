@@ -4,6 +4,7 @@
 #define PESSOA_CONTROLLER_H
 
 #include "../model/pessoa.h"
+#include "../view/pessoa_view.h"
 #include "../controller/controller.h"
 #include "../utils/utils.h"
 

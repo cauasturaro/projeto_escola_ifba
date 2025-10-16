@@ -16,7 +16,7 @@ void person_print(const void *obj, int id)
 {
     const Person *p = (Person *)obj;
     printf("> ID: %d | Matrícula: %s | Nome: %s | Genero: %c | Data de Nascimento: %s | CPF: %s\n",
-           id, p->name, p->registration, p->gender, p->birth, p->CPF);
+        id, p->registration, p->name, p->gender, p->birth, p->CPF);
 }
 
 Adapter personAdapter = {
