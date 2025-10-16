@@ -25,6 +25,20 @@ void subjects_menu(int *option)
     getchar();
 }
 
+void update_subject_menu(int *option, Subject *selected_subject)
+{
+    printf("\n--- Atualizando %s ---\n", selected_subject->name);
+    printf("1 - Alterar nome\n");
+    printf("2 - Alterar codigo\n");
+    printf("3 - Alterar semestre\n");
+    printf("4 - Alterar professor\n");
+    printf("5 - Adicionar aluno\n");
+    printf("6 - Remover aluno\n");
+    printf("0 - Sair\n");
+    scanf("%d", option);
+    getchar();
+}
+
 void students_menu(int *option)
 {
     printf("\n--- MENU ALUNOS ---\n");

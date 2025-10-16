@@ -4,6 +4,7 @@
 #define DISCIPLINA_CONTROLLER_H
 
 #include "controller.h"
+#include "../model/disciplina.h"
 
 void subject_module();
 void add_subject(int *subject_count, int *teachers_count);
