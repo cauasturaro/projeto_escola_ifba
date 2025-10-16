@@ -11,6 +11,8 @@
 #include "../view/pessoa_view.h"
 #include "../view/menu.h"
 
+#include "../utils/pessoa_utils.h"
+#include "../utils/disciplina_utils.h"
 #include "../utils/utils.h"
 
 void remover(void *array, int *total, size_t element_size);

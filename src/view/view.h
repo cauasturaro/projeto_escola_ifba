@@ -15,6 +15,8 @@
 #include "../controller/pessoa_controller.h"
 #include "../controller/disciplina_controller.h"
 
+#include "../utils/disciplina_utils.h"
+#include "../utils/pessoa_utils.h"
 #include "../utils/utils.h"
 
 #include "menu.h"

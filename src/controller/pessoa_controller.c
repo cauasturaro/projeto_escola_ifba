@@ -1,5 +1,3 @@
-#include <stdio.h>
-#include <string.h>
 #include "pessoa_controller.h"
 
 void register_person(int type)
