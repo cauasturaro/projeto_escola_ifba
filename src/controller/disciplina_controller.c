@@ -240,3 +240,10 @@ void remove_subject_student(Subject *selected_subject, int *students_count)
     (*students_count)--;
     printf("Aluno removido com sucesso!\n");
 }
+
+void remover_subject()
+{
+    list_subjects(&total_subjects);
+    printf("\n");
+    remover((void *)subjects, &total_subjects, sizeof(Subject));
+}

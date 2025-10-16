@@ -7,12 +7,12 @@ Person teachers[MAX_PEOPLE];
 int total_students = 0;
 int total_teachers = 0;
 
-const char *personGetId(const void *obj)
+const char *person_get_id(const void *obj)
 {
     return ((Person *)obj)->registration;
 }
 
-void personPrint(const void *obj, int id)
+void person_print(const void *obj, int id)
 {
     const Person *p = (Person *)obj;
     printf("> ID: %d | Matrícula: %s | Nome: %s | Genero: %c | Data de Nascimento: %s | CPF: %s\n",
@@ -20,5 +20,5 @@ void personPrint(const void *obj, int id)
 }
 
 Adapter personAdapter = {
-    .getId = personGetId,
-    .print = personPrint};
+    .getId = person_get_id,
+    .print = person_print};

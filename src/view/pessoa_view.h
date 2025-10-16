@@ -4,6 +4,7 @@
 #define PESSOA_VIEW_H
 
 #include "../model/pessoa.h"
+#include "../controller/controller.h"
 #include "../controller/pessoa_controller.h"
 #include "../view/menu.h"
 #include "../view/view.h"
