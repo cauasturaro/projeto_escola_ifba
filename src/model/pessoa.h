@@ -3,6 +3,8 @@
 #ifndef PESSOA_H
 #define PESSOA_H
 
+#include "../model/adapter.h"
+
 #define SIZE_REGISTRATION 12
 #define SIZE_NAME 100
 #define SIZE_BIRTH 11
@@ -22,5 +24,7 @@ extern Person students[MAX_PEOPLE];
 extern Person teachers[MAX_PEOPLE];
 extern int total_students;
 extern int total_teachers;
+
+extern Adapter personAdapter;
 
 #endif
