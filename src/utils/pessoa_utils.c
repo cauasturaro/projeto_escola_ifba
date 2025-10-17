@@ -109,7 +109,7 @@ void read_registration(char id[], int type)
 {
     while (1)
     {
-        printf("Digite o numero de matricula (11 dígitos): ");
+        printf("Digite o numero de matricula (11 digitos): ");
         fgets(id, 100, stdin);
         id[strcspn(id, "\n")] = 0;
 

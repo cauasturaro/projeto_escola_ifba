@@ -134,7 +134,7 @@ void update_subject(int *subjects_count, int *teachers_count)
             break;
 
         default:
-            printf("Opção Inválida!\n");
+            printf("Opção Invalida!\n");
         }
     }
 }
