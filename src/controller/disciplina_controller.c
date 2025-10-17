@@ -198,6 +198,10 @@ void add_subject_student(Subject *selected_subject, int *students_count, int *to
     }
 
     selected_subject->students[*students_count] = students[selected_student_id];
+
+    int * enrolled_subjects_count = &students[selected_student_id].enrolled_subjects;
+    (*enrolled_subjects_count)++;
+
     (*students_count)++;
     printf("Aluno adicionado com sucesso!\n");
 }
@@ -242,12 +246,16 @@ void remove_subject_student(Subject *selected_subject, int *students_count)
         break;
     }
 
+    int * enrolled_subjects_count = &students[selected_student_id].enrolled_subjects;
+    (*enrolled_subjects_count)--;
+
     for (int i = selected_student_id; i < *students_count - 1; i++)
     {
         selected_subject->students[i] = selected_subject->students[i + 1];
     }
 
     (*students_count)--;
+    
     printf("Aluno removido com sucesso!\n");
 }
 

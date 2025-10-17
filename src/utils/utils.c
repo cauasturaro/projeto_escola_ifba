@@ -227,7 +227,7 @@ void dev_add_subjects(void)
 
     if (total_teachers == 0)
     {
-        printf("Nenhum professor disponível. Adicione professores primeiro.\n");
+        printf("Nenhum professor disponivel. Adicione professores primeiro.\n");
         pause_view();
         return;
     }

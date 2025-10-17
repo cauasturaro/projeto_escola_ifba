@@ -54,8 +54,9 @@ void students_menu(int *option)
     printf("1 - Adicionar Aluno\n");
     printf("2 - Listar Alunos\n");
     printf("3 - Listar Alunos Filtrados\n");
-    printf("4 - Atualizar Aluno\n");
-    printf("5 - Remover Aluno\n");
+    printf("4 - Listar Alunos Por Numero de Disciplinas\n");
+    printf("5 - Atualizar Aluno\n");
+    printf("6 - Remover Aluno\n");
     printf("0 - Sair");
     printf("\n=============================\n");
 

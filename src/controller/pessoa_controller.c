@@ -34,6 +34,7 @@ void register_person(int type)
     if (type == 1)
     {
         students[total_students++] = new_person;
+        students[total_students].enrolled_subjects = 0;
         printf("Estudante registrado com sucesso.\n\n");
     }
     else if (type == 2)
@@ -260,5 +261,50 @@ void search_by_name()
     {
         clear_screen();
         printf("Nenhuma pessoa encontrada com essas letras.\n\n");
+    }
+}
+
+void search_by_enrolled_subjects () {
+    if (!total_subjects)
+    {
+        printf("Nenhuma disciplina cadastrada.\n");
+        pause_view();
+        return;
+    }
+
+    if (!total_students)
+    {
+        printf("Nenhum aluno cadastrado.\n");
+        pause_view();
+        return;
+    }
+
+    int enrolled_subjects_count = read_int_option("\nDigite o numero de disciplinas cursadas: ", 0, MAX_SUBJECTS);
+
+    if (!enrolled_subjects_count) {
+        printf("\nAlunos sem matricula em disciplinas:\n");
+    } else if (enrolled_subjects_count == 1) {
+        printf("\nAlunos matriculados em apenas 1 disciplina:\n");
+    } else {
+        printf("\nAlunos matriculados em %d disciplinas:\n", enrolled_subjects_count);
+    }
+
+    int found_students = 0;
+    for (int i = 0; i < total_students; i++)
+    {
+        if (enrolled_subjects_count == students[i].enrolled_subjects) {
+            printf("> ID: %d | Matricula: %s | Nome: %s | Genero: %c | Data de Nascimento: %s | CPF: %s\n",
+                   i, students[i].registration, students[i].name, students[i].gender,
+                   students[i].birth, students[i].CPF);
+            found_students++;
+        }
+    }
+
+    if (!found_students) {
+        printf("Nenhum estudante encontrado.\n");
+    } else if (found_students == 1) {
+        printf("Apenas 1 estudante encontrado.\n");
+    } else {
+        printf("%d estudantes encontrados.\n", found_students);
     }
 }
