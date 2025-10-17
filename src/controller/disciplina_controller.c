@@ -12,9 +12,9 @@ void select_teacher(Person *subject_teacher, int *teachers_count)
 {
     char selected_teacher[MAX_STR] = "";
     int selected_teacher_id = -1;
-
-    printf("Selecione um professor para a disciplina:\n");
+    printf("\n");
     list_teachers();
+    printf("Selecione um professor para a disciplina:\n");
     fgets(selected_teacher, MAX_STR, stdin);
     selected_teacher[strcspn(selected_teacher, "\n")] = '\0';
 
@@ -55,7 +55,9 @@ void add_subject(int *subject_count, int *teachers_count)
         return;
     }
 
-    printf("Adicionando Disciplina...\n");
+    clear_screen();
+
+    printf("======== ADICIONANDO DISCIPLINA ========\n");
     Subject new_subject;
 
     read_subject_name(new_subject.name, MAX_STR);

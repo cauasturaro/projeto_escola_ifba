@@ -41,13 +41,40 @@ int validate_numeric_string(char numbers[])
     return 1;
 }
 
-static SortAdapter current_sort_adapter;
-static SortField current_field;
+SortAdapter current_sort_adapter;
+SortField current_field;
 
 int comparar_entidades(const void *a, const void *b)
 {
+    const Person *p1 = (const Person *)a;
+    const Person *p2 = (const Person *)b;
+
+    if (current_field == SORT_BY_GENDER)
+    {
+        if (p1->gender == p2->gender)
+            return 0;
+        if (p1->gender == 'F')
+            return -1; // F antes
+        return 1;      // M depois
+    }
+
+    // resto da comparação usando strings, datas, etc.
     const char *v1 = current_sort_adapter.get_field(a, current_field);
     const char *v2 = current_sort_adapter.get_field(b, current_field);
+
+    if (current_field == SORT_BY_BIRTH)
+    {
+        int d1, m1, y1, d2, m2, y2;
+        sscanf(v1, "%d/%d/%d", &d1, &m1, &y1);
+        sscanf(v2, "%d/%d/%d", &d2, &m2, &y2);
+
+        if (y1 != y2)
+            return y1 - y2;
+        if (m1 != m2)
+            return m1 - m2;
+        return d1 - d2;
+    }
+
     return strcmp(v1, v2);
 }
 

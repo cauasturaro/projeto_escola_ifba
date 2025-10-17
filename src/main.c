@@ -21,17 +21,14 @@ int main()
         case 1:
             clear_screen();
             students_module();
-            pause_view();
             break;
         case 2:
             clear_screen();
             teachers_module();
-            pause_view();
             break;
         case 3:
             clear_screen();
             subject_module();
-            pause_view();
             break;
         case 0:
             clear_screen();
