@@ -46,7 +46,7 @@ void students_module()
         case 2:
             clear_screen();
             list_students();
-            pause_view_without_clear_buffer();
+            pause_view();
             break;
 
         case 3:
@@ -63,7 +63,7 @@ void students_module()
         case 5:
             clear_screen();
             remover_student();
-            pause_view_without_clear_buffer();
+            pause_view();
             break;
 
         default:
@@ -93,7 +93,7 @@ void teachers_module()
         case 2:
             clear_screen();
             list_teachers();
-            pause_view_without_clear_buffer();
+            pause_view();
             break;
 
         case 3:

@@ -137,7 +137,7 @@ void dev_menu_module()
             break;
         default:
             printf("Opção inválida!\n");
-            pause_view_without_clear_buffer();
+            pause_view();
             break;
         }
     }

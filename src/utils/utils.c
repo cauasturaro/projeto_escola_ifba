@@ -35,13 +35,6 @@ void clear_buffer()
 void pause_view()
 {
     printf("Pressione ENTER para continuar...");
-    clear_buffer();
-    getchar();
-}
-
-void pause_view_without_clear_buffer()
-{
-    printf("Pressione ENTER para continuar...");
     getchar();
 }
 
@@ -158,7 +151,7 @@ void dev_add_students(void)
     if (total_students + 20 > MAX_PEOPLE)
     {
         printf("Erro! Não há espaço suficiente para adicionar 20 alunos.\n");
-        pause_view_without_clear_buffer();
+        pause_view();
         return;
     }
 
@@ -184,7 +177,7 @@ void dev_add_students(void)
     }
 
     printf("\n20 alunos adicionados automaticamente com sucesso!\n");
-    pause_view_without_clear_buffer();
+    pause_view();
 }
 
 void dev_add_teachers(void)
@@ -192,7 +185,7 @@ void dev_add_teachers(void)
     if (total_teachers + 20 > MAX_PEOPLE)
     {
         printf("Erro! Não há espaço suficiente para adicionar 20 professores.\n");
-        pause_view_without_clear_buffer();
+        pause_view();
         return;
     }
 
@@ -220,7 +213,7 @@ void dev_add_teachers(void)
     }
 
     printf("\n20 professores adicionados automaticamente com sucesso!\n");
-    pause_view_without_clear_buffer();
+    pause_view();
 }
 
 void dev_add_subjects(void)
@@ -228,14 +221,14 @@ void dev_add_subjects(void)
     if (total_subjects + 5 > MAX_SUBJECTS)
     {
         printf("Erro! Não há espaço suficiente para adicionar 5 disciplinas.\n");
-        pause_view_without_clear_buffer();
+        pause_view();
         return;
     }
 
     if (total_teachers == 0)
     {
         printf("Nenhum professor disponível. Adicione professores primeiro.\n");
-        pause_view_without_clear_buffer();
+        pause_view();
         return;
     }
 
@@ -260,28 +253,28 @@ void dev_add_subjects(void)
     }
 
     printf("\n5 disciplinas adicionadas automaticamente com sucesso!\n");
-    pause_view_without_clear_buffer();
+    pause_view();
 }
 
 void dev_clear_students(void)
 {
     total_students = 0;
     printf("\nTodos os alunos foram removidos!\n");
-    pause_view_without_clear_buffer();
+    pause_view();
 }
 
 void dev_clear_teachers(void)
 {
     total_teachers = 0;
     printf("\nTodos os professores foram removidos!\n");
-    pause_view_without_clear_buffer();
+    pause_view();
 }
 
 void dev_clear_subjects(void)
 {
     total_subjects = 0;
     printf("\nTodas as disciplinas foram removidas!\n");
-    pause_view_without_clear_buffer();
+    pause_view();
 }
 
 void dev_show_totals(void)
@@ -292,5 +285,5 @@ void dev_show_totals(void)
     printf("Total de disciplinas: %d\n", total_subjects);
     printf("================================\n\n");
 
-    pause_view_without_clear_buffer();
+    pause_view();
 }

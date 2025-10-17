@@ -9,7 +9,7 @@ void register_person(int type)
         if (total_students >= MAX_PEOPLE)
         {
             printf("Erro! Limite de estudantes atingido.\n");
-            pause_view_without_clear_buffer();
+            pause_view();
             return;
         }
     }
@@ -18,7 +18,7 @@ void register_person(int type)
         if (total_teachers >= MAX_PEOPLE)
         {
             printf("Erro! Limite de professores atingido.\n");
-            pause_view_without_clear_buffer();
+            pause_view();
             return;
         }
     }
@@ -49,14 +49,14 @@ void update_person(Person array[], int total, int type)
     if (type == 1 && total_students == 0)
     {
         printf("Nenhum aluno cadastrado!\n\n");
-        pause_view_without_clear_buffer();
+        pause_view();
         return;
     }
 
     if (type == 2 && total_teachers == 0)
     {
         printf("Nenhum professor cadastrado!\n\n");
-        pause_view_without_clear_buffer();
+        pause_view();
         return;
     }
 
@@ -119,7 +119,7 @@ void remover_student()
     if (total_students == 0)
     {
         printf("Nenhum aluno cadastrado!\n\n");
-        pause_view_without_clear_buffer();
+        pause_view();
         return;
     }
 
@@ -134,7 +134,7 @@ void remover_teacher()
     if (total_teachers == 0)
     {
         printf("Nenhum professor cadastrado!\n\n");
-        pause_view_without_clear_buffer();
+        pause_view();
         return;
     }
 

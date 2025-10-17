@@ -65,19 +65,19 @@ void subject_module()
         case 1:
             clear_screen();
             add_subject(&total_subjects, &total_teachers);
-            pause_view_without_clear_buffer();
+            pause_view();
             break;
 
         case 2:
             clear_screen();
             list_subjects(&total_subjects);
-            pause_view_without_clear_buffer();
+            pause_view();
             break;
 
         case 3:
             clear_screen();
             list_subject_students(&total_subjects);
-            pause_view_without_clear_buffer();
+            pause_view();
             break;
         case 4:
             clear_screen();

@@ -80,7 +80,7 @@ void update_subject(int *subjects_count, int *teachers_count)
     if (!(*subjects_count))
     {
         printf("Nao ha disciplinas cadastradas.\n");
-        pause_view_without_clear_buffer();
+        pause_view();
         return;
     }
 
@@ -147,14 +147,14 @@ void add_subject_student(Subject *selected_subject, int *students_count, int *to
     if (*students_count >= MAX_STUDENTS)
     {
         printf("Turma cheia!\n");
-        pause_view_without_clear_buffer();
+        pause_view();
         return;
     }
 
     if (total_students == 0)
     {
         printf("Nao ha alunos cadastrados.\n");
-        pause_view_without_clear_buffer();
+        pause_view();
         return;
     }
 
@@ -256,7 +256,7 @@ void remover_subject()
     if (total_subjects == 0)
     {
         printf("Nao ha disciplinas cadastradas\n");
-        pause_view_without_clear_buffer();
+        pause_view();
         return;
     }
 

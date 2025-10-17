@@ -13,7 +13,7 @@ void string_to_uppercase(char str[]);
 void clear_buffer();
 void clear_screen();
 void pause_view();
-void pause_view_without_clear_buffer();
+void pause_view();
 
 int validate_numeric_string(char numbers[]);
 
