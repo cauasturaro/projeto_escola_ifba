@@ -204,9 +204,12 @@ void search_by_name()
     printf("Digite pelo menos 3 letras do nome a ser buscado: ");
     scanf(" %[^\n]", search);
 
+    clear_buffer();
+
     if (strlen(search) < 3)
     {
-        printf("Você deve digitar pelo menos 3 letras.\n");
+        clear_screen();
+        printf("Você deve digitar pelo menos 3 letras.\n\n");
         return;
     }
     to_lowercase(search);
@@ -224,7 +227,7 @@ void search_by_name()
         {
             if (!printed_students)
             {
-                printf("\nAlunos:\n");
+                printf("\n----- Alunos:\n\n");
                 printed_students = 1;
             }
             printf("> Nome: %s, Matricula: %s\n", students[i].name, students[i].registration);
@@ -243,13 +246,19 @@ void search_by_name()
         {
             if (!printed_teachers)
             {
-                printf("\nProfessores:\n");
+                printf("\n----- Professores:\n\n");
                 printed_teachers = 1;
             }
             printf("> Nome: %s, Matricula: %s\n", teachers[i].name, teachers[i].registration);
             found = 1;
         }
     }
+
+    printf("\n======== Resultados da busca por '%s' ========\n", search);
+
     if (!found)
-        printf("Nenhuma pessoa encontrada com essas letras.\n");
+    {
+        clear_screen();
+        printf("Nenhuma pessoa encontrada com essas letras.\n\n");
+    }
 }
