@@ -147,19 +147,20 @@ void add_subject_student(Subject *selected_subject, int *students_count, int *to
     if (*students_count >= MAX_STUDENTS)
     {
         printf("Turma cheia!\n");
+        pause_view_without_clear_buffer();
         return;
     }
 
-    if (!(*students_count))
+    if (total_students == 0)
     {
         printf("Nao ha alunos cadastrados.\n");
+        pause_view_without_clear_buffer();
         return;
     }
 
     list_students();
 
     printf("Selecione um novo aluno para a disciplina: ");
-    clear_buffer();
     fgets(selected_student, MAX_STR, stdin);
     selected_student[strcspn(selected_student, "\n")] = '\0';
 
@@ -213,7 +214,7 @@ void remove_subject_student(Subject *selected_subject, int *students_count)
     int selected_student_id = 0;
 
     list_subject_students(students_count);
-    printf("Selecione qual aluno deseja remover: ");
+    printf("\nSelecione qual aluno deseja remover: ");
     fgets(selected_student, MAX_STR, stdin);
     selected_student[strcspn(selected_student, "\n")] = '\0';
 

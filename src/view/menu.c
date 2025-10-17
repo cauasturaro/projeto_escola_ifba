@@ -32,6 +32,7 @@ void subjects_menu(int *option)
 
 void update_subject_menu(int *option, Subject *selected_subject)
 {
+
     clear_screen();
     printf("\n======== Atualizando %s ========\n", selected_subject->name);
     printf("1 - Alterar nome\n");

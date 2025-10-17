@@ -40,13 +40,14 @@ void list_subject_students(int *subject_count)
         return;
     }
 
-    printf("\n========== ALUNOS DE %s ==========\n", selected_subject->name);
+    printf("\n========== ALUNOS DE %s ==========\n\n", selected_subject->name);
     for (int i = 0; i < selected_subject->students_count; i++)
     {
         printf("> ID: %d | Matricula: %s | Nome: %s | Genero: %c | Data de Nascimento: %s | CPF: %s\n",
                i, selected_subject->students[i].registration, selected_subject->students[i].name, selected_subject->students[i].gender,
                selected_subject->students[i].birth, selected_subject->students[i].CPF);
     }
+    printf("\n========== ALUNOS DE %s ==========\n\n", selected_subject->name);
 }
 
 void subject_module()
