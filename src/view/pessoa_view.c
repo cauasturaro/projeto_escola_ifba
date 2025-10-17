@@ -50,6 +50,7 @@ void students_module()
         case 5:
             clear_screen();
             remover_student();
+            pause_view_without_clear();
             break;
 
         default:
@@ -96,6 +97,7 @@ void teachers_module()
         case 5:
             clear_screen();
             remover_teacher();
+            pause_view_without_clear();
             break;
 
         default:
