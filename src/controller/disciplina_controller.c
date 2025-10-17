@@ -72,7 +72,7 @@ void add_subject(int *subject_count, int *teachers_count)
     Subject *selected_subject = &subjects[(*subject_count)];
     *selected_subject = new_subject;
     (*subject_count)++;
-    printf("Nova disciplina adicionada com sucesso!\n");
+    printf("\nNova disciplina adicionada com sucesso!\n\n");
 }
 
 void update_subject(int *subjects_count, int *teachers_count)

@@ -39,7 +39,8 @@ void list_subject_students(int *subject_count)
 
     if ((selected_subject->students_count) == 0)
     {
-        printf("%s nao possui alunos.", selected_subject->name);
+        clear_screen();
+        printf("%s Nao possui alunos.\n\n", selected_subject->name);
         return;
     }
 
@@ -84,7 +85,6 @@ void subject_module()
         case 4:
             clear_screen();
             listar_ordenado_subject_module();
-            pause_view_without_clear_buffer();
             break;
 
         case 5:
