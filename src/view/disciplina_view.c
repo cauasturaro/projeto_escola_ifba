@@ -12,25 +12,41 @@ void list_subjects(int *subject_count)
     list("========== DISCIPLINAS ==========", subjects, total_subjects, sizeof(Subject), subjectListagemAdapter);
 }
 
-void list_subject_students(Subject *selected_subject, int students_count)
+void list_subject_students(int *subject_count)
 {
-    if (!total_subjects)
-    {
+    if (!total_subjects) {
         printf("Nao ha disciplinas cadastradas.\n");
         return;
     }
 
-    if (students_count == 0)
+    list_subjects(subject_count);
+
+    printf("Digite o ID da Disciplina que deseja listar alunos:\n");
+    scanf("%d", &selected_subject_id);
+    getchar();
+
+    while ((selected_subject_id > total_subjects) || (selected_subject_id <= 0))
+    {
+        printf("ID invalido!\n");
+        list_subjects(subject_count);
+        printf("Digite o ID da disciplina que deseja listar alunos:\n");
+        scanf("%d", &selected_subject_id);
+        getchar();
+    }
+
+    Subject *selected_subject = &subjects[selected_subject_id];
+
+    if ((selected_subject->students_count) == 0)
     {
         printf("%s nao possui alunos.", selected_subject->name);
         return;
     }
 
     printf("\n========== ALUNOS DE %s ==========\n", selected_subject->name);
-    for (int i = 0; i < students_count && students[i].gender; i++)
+    for (int i = 0; i < selected_subject->students_count && students[i].gender; i++)
     {
-        printf("> ID: %03d | Matricula: %s | Nome: %s | Genero: %c | Data de Nascimento: %s | CPF: %s\n",
-               i + 1, selected_subject->students[i].registration, selected_subject->students[i].name, selected_subject->students[i].gender,
+        printf("> ID: %d | Matricula: %s | Nome: %s | Genero: %c | Data de Nascimento: %s | CPF: %s\n",
+               i, selected_subject->students[i].registration, selected_subject->students[i].name, selected_subject->students[i].gender,
                selected_subject->students[i].birth, selected_subject->students[i].CPF);
     }
 }
@@ -50,6 +66,7 @@ void subject_module()
         case 1:
             clear_screen();
             add_subject(&total_subjects, &total_teachers);
+            pause_view();
             break;
 
         case 2:
@@ -60,45 +77,25 @@ void subject_module()
 
         case 3:
             clear_screen();
-            if (!total_subjects)
-            {
-                printf("Nao ha disciplinas cadastradas.\n");
-            }
-            else
-            {
-                list_subjects(&total_subjects);
-
-                printf("Digite o ID da Disciplina que deseja listar alunos:\n");
-                scanf("%d", &selected_subject_id);
-                getchar();
-
-                while ((selected_subject_id > total_subjects) || (selected_subject_id <= 0))
-                {
-                    printf("ID invalido!\n");
-                    list_subjects(&total_subjects);
-                    printf("Digite o ID da disciplina que deseja listar alunos:\n");
-                    scanf("%d", &selected_subject_id);
-                    getchar();
-                }
-
-                selected_subject_id--;
-                Subject *selected_subject = &subjects[selected_subject_id];
-                list_subject_students(selected_subject, selected_subject->students_count);
-            }
+            list_subject_students(&total_subjects);
+            pause_view();
             break;
         case 4:
             clear_screen();
             listar_ordenado_subject_module();
+            pause_view();
             break;
 
         case 5:
             clear_screen();
             update_subject(&total_subjects, &total_teachers);
+            pause_view();
             break;
 
         case 6:
             clear_screen();
             remover_subject();
+            pause_view();
             break;
 
         default:
@@ -110,6 +107,11 @@ void subject_module()
 
 void listar_ordenado_subject_module()
 {
+    if (total_subjects == 0) {
+        printf("Nao ha disciplinas cadastradas\n");
+        return;
+    }
+
     int option = 1;
     while (option)
     {

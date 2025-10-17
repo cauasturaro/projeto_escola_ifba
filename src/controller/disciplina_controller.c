@@ -55,6 +55,12 @@ void add_subject(int *subject_count, int *teachers_count)
         return;
     }
 
+    if (total_teachers == 0)
+    {
+        printf("Nenhum professor disponivel.\n");
+        return;
+    }
+
     clear_screen();
 
     printf("======== ADICIONANDO DISCIPLINA ========\n");
@@ -206,7 +212,7 @@ void remove_subject_student(Subject *selected_subject, int *students_count)
     char selected_student[MAX_STR] = "";
     int selected_student_id = 0;
 
-    list_subject_students(selected_subject, *students_count);
+    list_subject_students(students_count);
     printf("Selecione qual aluno deseja remover:\n");
     fgets(selected_student, MAX_STR, stdin);
     selected_student[strcspn(selected_student, "\n")] = '\0';
@@ -249,6 +255,11 @@ void remove_subject_student(Subject *selected_subject, int *students_count)
 
 void remover_subject()
 {
+    if (total_subjects == 0) {
+        printf("Nao ha disciplinas cadastradas\n");
+        return;
+    }
+
     list_subjects(&total_subjects);
     printf("\n");
     printf("Digite o ID da disciplina a ser removida: ");
