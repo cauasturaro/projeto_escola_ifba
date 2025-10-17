@@ -12,7 +12,8 @@ typedef enum
     SORT_BY_CODE,
     SORT_BY_SEMESTER,
     SORT_BY_STUDENT_COUNT,
-    SORT_BY_STUDENT_CPF
+    SORT_BY_STUDENT_CPF,
+    SORT_BY_VACANCIES
 } SortField;
 
 typedef struct

@@ -29,6 +29,9 @@ const char *subject_get_sort_field(const void *obj, SortField field)
     case SORT_BY_STUDENT_COUNT:
         snprintf(count_str, sizeof(count_str), "%d", s->students_count);
         return count_str;
+    case SORT_BY_VACANCIES:
+        snprintf(count_str, sizeof(count_str), "%d", MAX_STUDENTS - s->students_count);
+        return count_str;
     default:
         return "";
     }
@@ -37,7 +40,7 @@ const char *subject_get_sort_field(const void *obj, SortField field)
 void subject_print(const void *obj, int id)
 {
     const Subject *p = (Subject *)obj;
-    printf("> ID: %d | Codigo: %s | Nome: %s | Semestre: %s | Professor: %s\n", id, p->code, p->name, p->semester, p->teacher.name);
+    printf("> ID: %d | Codigo: %s | Nome: %s | Semestre: %s | Professor: %s | Qnt. Alunos: %d | Vagas: %d\n", id, p->code, p->name, p->semester, p->teacher.name, p->students_count, MAX_STUDENTS - p->students_count);
 }
 
 ListagemAdapter subjectListagemAdapter = {
