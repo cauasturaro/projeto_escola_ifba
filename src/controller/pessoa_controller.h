@@ -17,4 +17,7 @@ void remover_teacher();
 
 void birthdays_by_month();
 
+void search_by_name();
+void to_lowercase(char *str);
+
 #endif

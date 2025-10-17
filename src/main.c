@@ -38,6 +38,11 @@ int main()
             birthdays_by_month();
             pause_view();
             break;
+        case 5:
+            clear_screen();
+            search_by_name();
+            pause_view();
+            break;
         case 0:
             clear_screen();
             printf("Saindo...\n");
