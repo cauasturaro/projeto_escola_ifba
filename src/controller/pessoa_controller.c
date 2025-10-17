@@ -21,7 +21,7 @@ void register_person(int type)
         }
     }
 
-    printf("\nRegistrando uma nova pessoa. \n");
+    printf("\n========= REGISTRANDO UMA NOVA PESSOA ========= \n");
 
     read_registration(new_person.registration, type);
     read_name(new_person.name);

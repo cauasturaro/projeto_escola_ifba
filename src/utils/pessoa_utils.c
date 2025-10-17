@@ -48,8 +48,8 @@ void read_cpf(char cpf[], int type, int ignore_index)
 
 int validate_name(char name[])
 {
-    if (strlen(name) == 0)  
-    return 0;
+    if (strlen(name) == 0)
+        return 0;
     for (int i = 0; name[i] != '\0'; i++)
     {
         char c = name[i];
@@ -109,11 +109,12 @@ void read_registration(char id[], int type)
 {
     while (1)
     {
-        printf("Digite o numero de matricula: ");
-        fgets(id, 100, stdin); 
-        id[strcspn(id, "\n")] = 0; 
+        printf("Digite o numero de matricula (11 dígitos): ");
+        fgets(id, 100, stdin);
+        id[strcspn(id, "\n")] = 0;
 
-        if (strlen(id) == 0) {
+        if (strlen(id) == 0)
+        {
             printf("Matricula vazia! Digite novamente.\n");
             continue;
         }
