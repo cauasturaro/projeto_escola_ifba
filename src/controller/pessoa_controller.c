@@ -173,7 +173,8 @@ void birthdays_by_month()
         return;
     }
 
-    printf("\n=== Aniversariantes do mes %02d ===\n", month);
+    clear_screen();
+    printf("\n======= Aniversariantes do mes %02d =======\n\n", month);
     int found = 0;
 
     for (int i = 0; i < total_students; i++)
@@ -198,8 +199,13 @@ void birthdays_by_month()
         }
     }
 
+    printf("\n======= Aniversariantes do mes %02d =======\n\n", month);
+
     if (!found)
-        printf("Nenhum aniversariante encontrado neste mes.\n");
+    {
+        clear_screen();
+        printf("\nNenhum aniversariante encontrado neste mes.\n\n");
+    }
 }
 
 void to_lowercase(char *str)
