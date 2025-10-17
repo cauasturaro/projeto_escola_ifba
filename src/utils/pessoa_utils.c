@@ -48,6 +48,8 @@ void read_cpf(char cpf[], int type, int ignore_index)
 
 int validate_name(char name[])
 {
+    if (strlen(name) == 0)
+        return 0;
     for (int i = 0; name[i] != '\0'; i++)
     {
         char c = name[i];
@@ -73,7 +75,7 @@ int validate_cpf(char cpf[])
 int validate_registration(char id[])
 {
     int len = strlen(id);
-    if (len > 11 || len < 1)
+    if (len != 11)
         return 0;
     for (int i = 0; i < len; i++)
     {
@@ -107,9 +109,16 @@ void read_registration(char id[], int type)
 {
     while (1)
     {
-        printf("Digite o numero de matricula: ");
-        scanf("%s", id);
-        getchar();
+        printf("Digite o numero de matricula (11 dígitos): ");
+        fgets(id, 100, stdin);
+        id[strcspn(id, "\n")] = 0;
+
+        if (strlen(id) == 0)
+        {
+            printf("Matricula vazia! Digite novamente.\n");
+            continue;
+        }
+
         if (!validate_registration(id))
         {
             printf("Matricula invalida! Digite novamente.\n");
@@ -140,7 +149,7 @@ void read_registration(char id[], int type)
         }
         if (duplicate)
         {
-            printf("Matricula já cadastrada! Digite outra.\n");
+            printf("Matricula ja cadastrada! Digite outra.\n");
             continue;
         }
         break;

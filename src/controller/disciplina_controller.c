@@ -12,9 +12,9 @@ void select_teacher(Person *subject_teacher, int *teachers_count)
 {
     char selected_teacher[MAX_STR] = "";
     int selected_teacher_id = -1;
-
-    printf("Selecione um professor para a disciplina:\n");
+    printf("\n");
     list_teachers();
+    printf("Selecione um professor para a disciplina:\n");
     fgets(selected_teacher, MAX_STR, stdin);
     selected_teacher[strcspn(selected_teacher, "\n")] = '\0';
 
@@ -32,18 +32,16 @@ void select_teacher(Person *subject_teacher, int *teachers_count)
 
         if ((selected_teacher_id >= *teachers_count) || (selected_teacher_id < 0))
         {
-            printf("ID invalido! Selecione um professor existente.\n");
+            printf("ID invalido! Selecione um professor cadastrado.\n");
             printf("Selecione um professor para a disciplina:\n");
             fgets(selected_teacher, MAX_STR, stdin);
             selected_teacher[strcspn(selected_teacher, "\n")] = '\0';
             continue;
         }
-        selected_teacher_id = atoi(selected_teacher);
 
         break;
     }
 
-    selected_teacher_id--;
     *subject_teacher = teachers[selected_teacher_id];
 }
 
@@ -55,7 +53,15 @@ void add_subject(int *subject_count, int *teachers_count)
         return;
     }
 
-    printf("Adicionando Disciplina...\n");
+    if (total_teachers == 0)
+    {
+        printf("Nenhum professor disponivel.\n");
+        return;
+    }
+
+    clear_screen();
+
+    printf("======== ADICIONANDO DISCIPLINA ========\n");
     Subject new_subject;
 
     read_subject_name(new_subject.name, MAX_STR);
@@ -66,7 +72,7 @@ void add_subject(int *subject_count, int *teachers_count)
     Subject *selected_subject = &subjects[(*subject_count)];
     *selected_subject = new_subject;
     (*subject_count)++;
-    printf("Nova disciplina adicionada com sucesso!\n");
+    printf("\nNova disciplina adicionada com sucesso!\n\n");
 }
 
 void update_subject(int *subjects_count, int *teachers_count)
@@ -85,7 +91,7 @@ void update_subject(int *subjects_count, int *teachers_count)
     printf("\nDigite o ID da Disciplina que deseja atualizar:\n");
     scanf("%d", &selected_subject_id);
     getchar();
-    while ((selected_subject_id > *subjects_count) || (selected_subject_id <= 0))
+    while ((selected_subject_id >= *subjects_count) || (selected_subject_id < 0))
     {
         printf("ID invalido!\n");
         printf("Digite o ID da Disciplina que deseja atualizar:\n");
@@ -93,7 +99,6 @@ void update_subject(int *subjects_count, int *teachers_count)
         scanf("%d", &selected_subject_id);
         getchar();
     }
-    selected_subject_id--;
 
     Subject *selected_subject = &subjects[selected_subject_id];
     while (option)
@@ -147,6 +152,12 @@ void add_subject_student(Subject *selected_subject, int *students_count, int *to
         return;
     }
 
+    if (!(*students_count))
+    {
+        printf("Nao ha alunos cadastrados.\n");
+        return;
+    }
+
     list_students();
 
     printf("Selecione um novo aluno para a disciplina:\n");
@@ -165,23 +176,21 @@ void add_subject_student(Subject *selected_subject, int *students_count, int *to
         }
         selected_student_id = atoi(selected_student);
 
-        if ((selected_student_id > *total_students_count) || (selected_student_id <= 0))
+        if ((selected_student_id >= *total_students_count) || (selected_student_id < 0))
         {
-            printf("ID invalido! Selecione um aluno existente.\n");
+            printf("ID invalido! Selecione um aluno cadastrado.\n");
             printf("Selecione um novo aluno para a disciplina:\n");
             fgets(selected_student, MAX_STR, stdin);
             selected_student[strcspn(selected_student, "\n")] = '\0';
             continue;
         }
-        selected_student_id = atoi(selected_student);
 
         break;
     }
 
-    selected_student_id--;
     for (int i = 0; i < *students_count; i++)
     {
-        if (*selected_subject->students[i].CPF == *selected_subject->students[selected_student_id].CPF)
+        if (!strcmp(selected_subject->students[i].CPF, selected_subject->students[selected_student_id].CPF))
         {
             printf("Este estudante ja cursa essa disciplina!\n");
             return;
@@ -204,7 +213,7 @@ void remove_subject_student(Subject *selected_subject, int *students_count)
     char selected_student[MAX_STR] = "";
     int selected_student_id = 0;
 
-    list_subject_students(selected_subject, *students_count);
+    list_subject_students(students_count);
     printf("Selecione qual aluno deseja remover:\n");
     fgets(selected_student, MAX_STR, stdin);
     selected_student[strcspn(selected_student, "\n")] = '\0';
@@ -221,8 +230,7 @@ void remove_subject_student(Subject *selected_subject, int *students_count)
         }
         selected_student_id = atoi(selected_student);
 
-        printf("\nn tem letra, aluno %d\n", selected_student_id);
-        if ((selected_student_id > *students_count) || (selected_student_id <= 0))
+        if ((selected_student_id >= *students_count) || (selected_student_id < 0))
         {
             printf("ID invalido! Selecione um aluno dessa disciplina.\n");
             printf("Selecione qual aluno deseja remover:\n");
@@ -230,15 +238,13 @@ void remove_subject_student(Subject *selected_subject, int *students_count)
             selected_student[strcspn(selected_student, "\n")] = '\0';
             continue;
         }
-        selected_student_id = atoi(selected_student);
 
         break;
     }
 
-    selected_student_id--;
-    for (int i = selected_student_id; i < *students_count; i++)
+    for (int i = selected_student_id; i < *students_count - 1; i++)
     {
-        selected_subject->students[i] = selected_subject->students[i];
+        selected_subject->students[i] = selected_subject->students[i + 1];
     }
 
     (*students_count)--;
@@ -247,6 +253,13 @@ void remove_subject_student(Subject *selected_subject, int *students_count)
 
 void remover_subject()
 {
+    if (total_subjects == 0)
+    {
+        printf("Nao ha disciplinas cadastradas\n");
+        pause_view_without_clear_buffer();
+        return;
+    }
+
     list_subjects(&total_subjects);
     printf("\n");
     printf("Digite o ID da disciplina a ser removida: ");

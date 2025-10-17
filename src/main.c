@@ -13,6 +13,7 @@ int main()
     int opcao = 1;
     while (opcao)
     {
+        clear_screen();
         show_menu();
         scanf("%d", &opcao);
 
@@ -21,17 +22,28 @@ int main()
         case 1:
             clear_screen();
             students_module();
-            pause_view();
             break;
         case 2:
             clear_screen();
             teachers_module();
-            pause_view();
             break;
         case 3:
             clear_screen();
             subject_module();
+            break;
+        case 4:
+            clear_screen();
+            birthdays_by_month();
             pause_view();
+            break;
+        case 5:
+            clear_screen();
+            search_by_name();
+            pause_view();
+            break;
+        case 6:
+            clear_screen();
+            dev_menu_module();
             break;
         case 0:
             clear_screen();

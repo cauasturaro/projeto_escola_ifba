@@ -28,7 +28,7 @@ const char *subject_get_sort_field(const void *obj, SortField field)
         return s->semester;
     case SORT_BY_STUDENT_COUNT:
         snprintf(count_str, sizeof(count_str), "%d", s->students_count);
-        return count_str; // uma forma segura de converter int para string
+        return count_str;
     default:
         return "";
     }
