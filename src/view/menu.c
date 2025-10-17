@@ -8,7 +8,7 @@ void show_menu()
     printf("2 - Modulo Professor\n");
     printf("3 - Modulo Disciplina\n");
     printf("4 - Aniversariantes do mes\n");
-    printf("5 - Buscar por nome\n");
+    printf("5 - Buscar pessoas por nome\n");
     printf("0 - Sair");
     printf("\n================================\n");
 
