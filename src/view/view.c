@@ -2,7 +2,7 @@
 
 void list(const char *titulo, void *array, int total, size_t element_size, ListagemAdapter adapter)
 {
-    printf("\n%s\n", titulo);
+    printf("\n%s\n\n", titulo);
 
     for (int i = 0; i < total; i++)
     {
@@ -10,5 +10,5 @@ void list(const char *titulo, void *array, int total, size_t element_size, Lista
         adapter.print(obj, i);
     }
 
-    printf("\n%s\n", titulo);
+    printf("\n%s\n\n", titulo);
 }

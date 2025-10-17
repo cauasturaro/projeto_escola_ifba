@@ -9,7 +9,7 @@ void list_subjects(int *subject_count)
         return;
     }
 
-    list("------------Disciplinas------------", subjects, total_subjects, sizeof(Subject), subjectListagemAdapter);
+    list("========== DISCIPLINAS ==========", subjects, total_subjects, sizeof(Subject), subjectListagemAdapter);
 }
 
 void list_subject_students(Subject *selected_subject, int students_count)
@@ -26,7 +26,7 @@ void list_subject_students(Subject *selected_subject, int students_count)
         return;
     }
 
-    printf("\n------------Alunos de %s------------\n", selected_subject->name);
+    printf("\n========== ALUNOS DE %s ==========\n", selected_subject->name);
     for (int i = 0; i < students_count && students[i].gender; i++)
     {
         printf("> ID: %03d | Matricula: %s | Nome: %s | Genero: %c | Data de Nascimento: %s | CPF: %s\n",
@@ -48,14 +48,18 @@ void subject_module()
             return;
 
         case 1:
+            clear_screen();
             add_subject(&total_subjects, &total_teachers);
             break;
 
         case 2:
+            clear_screen();
             list_subjects(&total_subjects);
+            pause_view();
             break;
 
         case 3:
+            clear_screen();
             if (!total_subjects)
             {
                 printf("Nao ha disciplinas cadastradas.\n");
@@ -83,14 +87,17 @@ void subject_module()
             }
             break;
         case 4:
+            clear_screen();
             listar_ordenado_subject_module();
             break;
 
         case 5:
+            clear_screen();
             update_subject(&total_subjects, &total_teachers);
             break;
 
         case 6:
+            clear_screen();
             remover_subject();
             break;
 
@@ -106,14 +113,18 @@ void listar_ordenado_subject_module()
     int option = 1;
     while (option)
     {
-        printf("Escolha a opcao de filtragem:\n");
+        printf("======== SELECIONE A OPCAO DE FILTRAGEM ========\n");
         printf("1 - Nome\n");
         printf("2 - Codigo\n");
         printf("3 - Semestre\n");
         printf("4 - Quantidade de Alunos\n");
-        printf("0 - Sair\n");
+        printf("0 - Sair");
+        printf("\n=============================================\n");
+
         scanf("%d", &option);
         getchar();
+
+        clear_screen();
 
         switch (option)
         {
@@ -123,20 +134,20 @@ void listar_ordenado_subject_module()
 
         case 1:
             ordenar(subjects, total_subjects, sizeof(Subject), subjectSortAdapter, SORT_BY_NAME);
-            list("---- Dados Filtrados por Nome ----", subjects, total_subjects, sizeof(Subject), subjectListagemAdapter);
+            list("======== DADOS FILTRADOS POR NOME ========", subjects, total_subjects, sizeof(Subject), subjectListagemAdapter);
             break;
 
         case 2:
             ordenar(subjects, total_subjects, sizeof(Subject), subjectSortAdapter, SORT_BY_CODE);
-            list("---- Dados Filtrados por Codigo ----", subjects, total_subjects, sizeof(Subject), subjectListagemAdapter);
+            list("======== DADOS FILTRADOS POR CODIGO ========", subjects, total_subjects, sizeof(Subject), subjectListagemAdapter);
             break;
         case 3:
             ordenar(subjects, total_subjects, sizeof(Subject), subjectSortAdapter, SORT_BY_SEMESTER);
-            list("---- Dados Filtrados por Semestre ----", subjects, total_subjects, sizeof(Subject), subjectListagemAdapter);
+            list("======== DADOS FILTRADOS POR SEMESTRE ========", subjects, total_subjects, sizeof(Subject), subjectListagemAdapter);
             break;
         case 4:
             ordenar(subjects, total_subjects, sizeof(Subject), subjectSortAdapter, SORT_BY_STUDENT_COUNT);
-            list("---- Dados Filtrados por Quantidade de Alunos ----", subjects, total_subjects, sizeof(Subject), subjectListagemAdapter);
+            list("======== DADOS FILTRADOS POR QUANTIDADE DE ALUNOS ========", subjects, total_subjects, sizeof(Subject), subjectListagemAdapter);
             break;
         default:
             printf("Opcao invalida!\n");

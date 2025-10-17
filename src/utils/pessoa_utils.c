@@ -73,7 +73,7 @@ int validate_cpf(char cpf[])
 int validate_registration(char id[])
 {
     int len = strlen(id);
-    if (len > 11 || len < 1)
+    if (len != 11)
         return 0;
     for (int i = 0; i < len; i++)
     {
@@ -107,7 +107,7 @@ void read_registration(char id[], int type)
 {
     while (1)
     {
-        printf("Digite o numero de matricula: ");
+        printf("Digite o numero de matricula (11 dígitos): ");
         scanf("%s", id);
         getchar();
         if (!validate_registration(id))

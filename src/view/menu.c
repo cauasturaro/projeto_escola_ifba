@@ -9,7 +9,7 @@ void show_menu()
     printf("2 - Módulo Professor\n");
     printf("3 - Módulo Disciplina\n");
     printf("0 - Sair");
-    printf("\n==================================\n");
+    printf("\n================================\n");
 
     printf("Escolha uma opcao: ");
 }
@@ -21,8 +21,9 @@ void subjects_menu(int *option)
     printf("1 - Adicionar Disciplina\n");
     printf("2 - Listar Disciplinas\n");
     printf("3 - Listar Alunos da Disciplina\n");
-    printf("4 - Atualizar Disciplina\n");
-    printf("5 - Remover Disciplina\n");
+    printf("4 - Listar Disciplinas Filtradas\n");
+    printf("5 - Atualizar Disciplina\n");
+    printf("6 - Remover Disciplina\n");
     printf("0 - Sair");
     printf("\n==================================\n");
 
@@ -71,8 +72,8 @@ void teachers_menu(int *option)
     printf("1 - Adicionar Professor\n");
     printf("2 - Listar Professores\n");
     printf("3 - Listar Professores Filtrados\n");
-    printf("5 - Atualizar Professor\n");
-    printf("6 - Remover Professor\n");
+    printf("4 - Atualizar Professor\n");
+    printf("5 - Remover Professor\n");
     printf("0 - Sair");
     printf("\n==================================\n");
 

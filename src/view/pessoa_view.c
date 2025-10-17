@@ -26,24 +26,29 @@ void students_module()
             return;
 
         case 1:
+            clear_screen();
             register_person(1);
             break;
 
         case 2:
+            clear_screen();
             list_students();
             pause_view();
             break;
 
         case 3:
+            clear_screen();
             listar_ordenado_people_module(1);
             break;
 
         case 4:
+            clear_screen();
             list_students();
             update_person(students, total_students, 1);
             break;
 
         case 5:
+            clear_screen();
             remover_student();
             break;
 
@@ -67,24 +72,29 @@ void teachers_module()
             return;
 
         case 1:
+            clear_screen();
             register_person(2);
             break;
 
         case 2:
+            clear_screen();
             list_teachers();
             pause_view();
             break;
 
         case 3:
+            clear_screen();
             listar_ordenado_people_module(2);
             break;
 
         case 4:
+            clear_screen();
             list_teachers();
             update_person(teachers, total_teachers, 2);
             break;
 
         case 5:
+            clear_screen();
             remover_teacher();
             break;
 
@@ -101,15 +111,19 @@ void listar_ordenado_people_module(int tipo)
     while (option)
     {
         clear_screen();
-        printf("Escolha a opcao de filtragem:\n");
+        printf("======== SELECIONE A OPCAO DE FILTRAGEM ========\n");
         printf("1 - Nome\n");
         printf("2 - Genero\n");
         printf("3 - Data de Nascimento\n");
         printf("4 - Matricula\n");
         printf("5 - CPF\n");
-        printf("0 - Sair\n");
+        printf("0 - Sair");
+        printf("\n=============================================\n");
+
         scanf("%d", &option);
         getchar();
+
+        clear_screen();
 
         switch (tipo)
         {
