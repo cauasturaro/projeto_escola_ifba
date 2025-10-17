@@ -117,6 +117,7 @@ void listar_ordenado_subject_module()
         printf("2 - Codigo\n");
         printf("3 - Semestre\n");
         printf("4 - Quantidade de Alunos\n");
+        printf("5 - Vagas disponiveis\n");
         printf("0 - Sair");
         printf("\n=============================================\n");
 
@@ -147,6 +148,10 @@ void listar_ordenado_subject_module()
         case 4:
             ordenar(subjects, total_subjects, sizeof(Subject), subjectSortAdapter, SORT_BY_STUDENT_COUNT);
             list("======== DADOS FILTRADOS POR QUANTIDADE DE ALUNOS ========", subjects, total_subjects, sizeof(Subject), subjectListagemAdapter);
+            break;
+        case 5:
+            ordenar(subjects, total_subjects, sizeof(Subject), subjectSortAdapter, SORT_BY_VACANCIES);
+            list("======== DADOS FILTRADOS POR VAGAS DISPONIVEIS ========", subjects, total_subjects, sizeof(Subject), subjectListagemAdapter);
             break;
         default:
             printf("Opcao invalida!\n");
