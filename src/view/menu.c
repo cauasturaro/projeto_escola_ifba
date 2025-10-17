@@ -12,8 +12,6 @@ void show_menu()
     printf("6 - DEV MENU\n");
     printf("0 - Sair");
     printf("\n================================\n");
-
-    printf("Escolha uma opcao: ");
 }
 
 void subjects_menu(int *option)
@@ -29,9 +27,7 @@ void subjects_menu(int *option)
     printf("0 - Sair");
     printf("\n==================================\n");
 
-    printf("Escolha uma opcao: ");
-    scanf("%d", option);
-    getchar();
+    *option = read_int_option("Escolha uma opcao: ", 0, 6);
 }
 
 void update_subject_menu(int *option, Subject *selected_subject)
@@ -47,9 +43,7 @@ void update_subject_menu(int *option, Subject *selected_subject)
     printf("0 - Sair\n");
     printf("\n==================================\n");
 
-    printf("Escolha uma opcao: ");
-    scanf("%d", option);
-    getchar();
+    *option = read_int_option("Escolha uma opcao: ", 0, 6);
 }
 
 void students_menu(int *option)
@@ -64,9 +58,7 @@ void students_menu(int *option)
     printf("0 - Sair");
     printf("\n=============================\n");
 
-    printf("Escolha uma opcao: ");
-    scanf("%d", option);
-    getchar();
+    *option = read_int_option("Escolha uma opcao: ", 0, 5);
 }
 
 void teachers_menu(int *option)
@@ -81,9 +73,7 @@ void teachers_menu(int *option)
     printf("0 - Sair");
     printf("\n==================================\n");
 
-    printf("Escolha uma opcao: ");
-    scanf("%d", option);
-    getchar();
+    *option = read_int_option("Escolha uma opcao: ", 0, 5);
 }
 
 // --------- DEV MENU
@@ -102,9 +92,7 @@ void dev_menu(int *option)
     printf("0 - Sair\n");
     printf("=======================================\n");
 
-    printf("Escolha uma opcao: ");
-    scanf("%d", option);
-    getchar();
+    *option = read_int_option("Escolha uma opcao: ", 0, 7);
 }
 
 void dev_menu_module()

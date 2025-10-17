@@ -14,7 +14,7 @@ void select_teacher(Person *subject_teacher, int *teachers_count)
     int selected_teacher_id = -1;
     printf("\n");
     list_teachers();
-    printf("Selecione um professor para a disciplina:\n");
+    printf("Selecione um professor para a disciplina: ");
     fgets(selected_teacher, MAX_STR, stdin);
     selected_teacher[strcspn(selected_teacher, "\n")] = '\0';
 
@@ -23,7 +23,7 @@ void select_teacher(Person *subject_teacher, int *teachers_count)
         if (!validate_numeric_string(selected_teacher))
         {
             printf("ID invalido! Digite apenas numeros.\n");
-            printf("Selecione um professor para a disciplina:\n");
+            printf("Selecione um professor para a disciplina: ");
             fgets(selected_teacher, MAX_STR, stdin);
             selected_teacher[strcspn(selected_teacher, "\n")] = '\0';
             continue;
@@ -33,7 +33,7 @@ void select_teacher(Person *subject_teacher, int *teachers_count)
         if ((selected_teacher_id >= *teachers_count) || (selected_teacher_id < 0))
         {
             printf("ID invalido! Selecione um professor cadastrado.\n");
-            printf("Selecione um professor para a disciplina:\n");
+            printf("Selecione um professor para a disciplina: ");
             fgets(selected_teacher, MAX_STR, stdin);
             selected_teacher[strcspn(selected_teacher, "\n")] = '\0';
             continue;
@@ -80,30 +80,28 @@ void update_subject(int *subjects_count, int *teachers_count)
     if (!(*subjects_count))
     {
         printf("Nao ha disciplinas cadastradas.\n");
+        pause_view_without_clear_buffer();
         return;
     }
 
     int option = 1;
 
-    printf("Atualizando Disciplina...\n");
     list_subjects(subjects_count);
 
-    printf("\nDigite o ID da Disciplina que deseja atualizar:\n");
-    scanf("%d", &selected_subject_id);
-    getchar();
+    selected_subject_id = read_int_option("Digite o ID da Disciplina que deseja atualizar: ", 0, *subjects_count - 1);
+
     while ((selected_subject_id >= *subjects_count) || (selected_subject_id < 0))
     {
         printf("ID invalido!\n");
-        printf("Digite o ID da Disciplina que deseja atualizar:\n");
+        printf("Digite o ID da Disciplina que deseja atualizar:");
         list_subjects(subjects_count);
-        scanf("%d", &selected_subject_id);
-        getchar();
+        selected_subject_id = read_int_option("Digite o ID da Disciplina que deseja atualizar: ", 0, *subjects_count - 1);
     }
 
     Subject *selected_subject = &subjects[selected_subject_id];
     while (option)
     {
-        subjects_menu(&option);
+        update_subject_menu(&option, selected_subject);
 
         switch (option)
         {
@@ -160,7 +158,8 @@ void add_subject_student(Subject *selected_subject, int *students_count, int *to
 
     list_students();
 
-    printf("Selecione um novo aluno para a disciplina:\n");
+    printf("Selecione um novo aluno para a disciplina: ");
+    clear_buffer();
     fgets(selected_student, MAX_STR, stdin);
     selected_student[strcspn(selected_student, "\n")] = '\0';
 
@@ -169,7 +168,7 @@ void add_subject_student(Subject *selected_subject, int *students_count, int *to
         if (!validate_numeric_string(selected_student))
         {
             printf("ID invalido! Digite apenas numeros.\n");
-            printf("Selecione um novo aluno para a disciplina:\n");
+            printf("Selecione um novo aluno para a disciplina: ");
             fgets(selected_student, MAX_STR, stdin);
             selected_student[strcspn(selected_student, "\n")] = '\0';
             continue;
@@ -179,7 +178,7 @@ void add_subject_student(Subject *selected_subject, int *students_count, int *to
         if ((selected_student_id >= *total_students_count) || (selected_student_id < 0))
         {
             printf("ID invalido! Selecione um aluno cadastrado.\n");
-            printf("Selecione um novo aluno para a disciplina:\n");
+            printf("Selecione um novo aluno para a disciplina: ");
             fgets(selected_student, MAX_STR, stdin);
             selected_student[strcspn(selected_student, "\n")] = '\0';
             continue;
@@ -214,7 +213,7 @@ void remove_subject_student(Subject *selected_subject, int *students_count)
     int selected_student_id = 0;
 
     list_subject_students(students_count);
-    printf("Selecione qual aluno deseja remover:\n");
+    printf("Selecione qual aluno deseja remover: ");
     fgets(selected_student, MAX_STR, stdin);
     selected_student[strcspn(selected_student, "\n")] = '\0';
 
@@ -223,7 +222,7 @@ void remove_subject_student(Subject *selected_subject, int *students_count)
         if (!validate_numeric_string(selected_student))
         {
             printf("ID invalido! Digite apenas numeros.\n");
-            printf("Selecione qual aluno deseja remover:\n");
+            printf("Selecione qual aluno deseja remover: ");
             fgets(selected_student, MAX_STR, stdin);
             selected_student[strcspn(selected_student, "\n")] = '\0';
             continue;
@@ -233,7 +232,7 @@ void remove_subject_student(Subject *selected_subject, int *students_count)
         if ((selected_student_id >= *students_count) || (selected_student_id < 0))
         {
             printf("ID invalido! Selecione um aluno dessa disciplina.\n");
-            printf("Selecione qual aluno deseja remover:\n");
+            printf("Selecione qual aluno deseja remover: ");
             fgets(selected_student, MAX_STR, stdin);
             selected_student[strcspn(selected_student, "\n")] = '\0';
             continue;
@@ -262,6 +261,5 @@ void remover_subject()
 
     list_subjects(&total_subjects);
     printf("\n");
-    printf("Digite o ID da disciplina a ser removida: ");
     remover((void *)subjects, &total_subjects, sizeof(Subject));
 }

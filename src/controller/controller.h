@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include <string.h>
+#include "../utils/utils.h"
 #include "../model/pessoa.h"
 #include "../model/adapter.h"
 

@@ -22,17 +22,13 @@ void list_subject_students(int *subject_count)
 
     list_subjects(subject_count);
 
-    printf("Digite o ID da Disciplina que deseja listar alunos:\n");
-    scanf("%d", &selected_subject_id);
-    getchar();
+    selected_subject_id = read_int_option("Digite o ID da Disciplina que deseja listar alunos: ", 0, *subject_count - 1);
 
     while ((selected_subject_id >= total_subjects) || (selected_subject_id < 0))
     {
         printf("ID invalido!\n");
         list_subjects(subject_count);
-        printf("Digite o ID da disciplina que deseja listar alunos:\n");
-        scanf("%d", &selected_subject_id);
-        getchar();
+        selected_subject_id = read_int_option("Digite o ID da disciplina que deseja listar alunos: ", 0, *subject_count - 1);
     }
 
     Subject *selected_subject = &subjects[selected_subject_id];
@@ -90,7 +86,6 @@ void subject_module()
         case 5:
             clear_screen();
             update_subject(&total_subjects, &total_teachers);
-            pause_view();
             break;
 
         case 6:

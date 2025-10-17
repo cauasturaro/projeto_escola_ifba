@@ -6,6 +6,8 @@
 #include "../model/pessoa.h"
 #include "../view/pessoa_view.h"
 
+int read_int_option(const char *prompt, int min, int max);
+
 void string_to_uppercase(char str[]);
 
 void clear_buffer();

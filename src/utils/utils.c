@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include "utils.h"
 #include <time.h>
+#include <ctype.h>
 
 void string_to_uppercase(char str[])
 {
@@ -105,6 +106,49 @@ void gerar_numero_aleatorio(char *str, int length)
     for (int i = 0; i < length; i++)
         str[i] = '0' + rand() % 10;
     str[length] = '\0';
+}
+
+int read_int_option(const char *prompt, int min, int max)
+{
+    char buffer[8];
+    int value;
+    while (1)
+    {
+        printf("%s", prompt);
+        if (!fgets(buffer, sizeof(buffer), stdin))
+        {
+            clearerr(stdin);
+            continue;
+        }
+
+        buffer[strcspn(buffer, "\n")] = '\0';
+
+        int valid = 1;
+        for (int i = 0; buffer[i] != '\0'; i++)
+        {
+            if (!isdigit((unsigned char)buffer[i]))
+            {
+                valid = 0;
+                break;
+            }
+        }
+
+        if (!valid)
+        {
+            printf("Entrada invalida! Digite apenas numeros.\n");
+            continue;
+        }
+
+        value = atoi(buffer);
+
+        if (value < min || value > max)
+        {
+            printf("Entrada fora do intervalo (%d-%d).\n", min, max);
+            continue;
+        }
+
+        return value;
+    }
 }
 
 // ----------------------------- DEV UTILS -----------------------------

@@ -45,13 +45,13 @@ int validate_code(char code[], int max_size)
 
 void read_subject_name(char subject_name[], int tam_str)
 {
-    printf("Insira o nome da disciplina:\n");
+    printf("Insira o nome da disciplina: ");
     fgets(subject_name, tam_str, stdin);
     subject_name[strcspn(subject_name, "\n")] = '\0';
     while (!validate_name(subject_name))
     {
         printf("Nome invalido! Digite apenas letras.\n");
-        printf("Insira o nome da disciplina:\n");
+        printf("Insira o nome da disciplina: ");
         fgets(subject_name, tam_str, stdin);
         subject_name[strcspn(subject_name, "\n")] = '\0';
     }
@@ -60,27 +60,37 @@ void read_subject_name(char subject_name[], int tam_str)
 
 void read_subject_code(char subject_code[], int tam_code)
 {
-    printf("Insira o codigo da disciplina (Ex.: INF019):\n");
-    fgets(subject_code, tam_code, stdin);
-    subject_code[strcspn(subject_code, "\n")] = '\0';
-    while (!validate_code(subject_code, tam_code))
+    while (1)
     {
-        printf("Codigo invalido! Siga o padrao: INF009.\n");
-        printf("Insira o codigo da disciplina (Ex.: INF019):\n");
-        fgets(subject_code, tam_code, stdin);
+        printf("Insira o codigo da disciplina (Ex.: INF019): ");
+        if (!fgets(subject_code, tam_code, stdin))
+        {
+            clearerr(stdin);
+            continue;
+        }
         subject_code[strcspn(subject_code, "\n")] = '\0';
+
+        if (strlen(subject_code) == (size_t)(tam_code - 1) && subject_code[tam_code - 2] != '\n')
+        {
+            clear_buffer();
+        }
+
+        if (validate_code(subject_code, tam_code))
+            break;
+
+        printf("Codigo invalido! Siga o padrao: INF009.\n");
     }
 }
 
 void read_subject_semester(char subject_semester[], int tam_str)
 {
-    printf("Insira o semestre da disciplina:\n");
+    printf("Insira o semestre da disciplina: ");
     fgets(subject_semester, tam_str, stdin);
     subject_semester[strcspn(subject_semester, "\n")] = '\0';
     while (!validate_numeric_string(subject_semester))
     {
         printf("Semestre invalido! Digite apenas numeros.\n");
-        printf("Insira o semestre da disciplina:\n");
+        printf("Insira o semestre da disciplina: ");
         fgets(subject_semester, tam_str, stdin);
         subject_semester[strcspn(subject_semester, "\n")] = '\0';
     }

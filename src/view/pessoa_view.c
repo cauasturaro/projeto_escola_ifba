@@ -2,11 +2,24 @@
 
 void list_students()
 {
+
+    if (total_students == 0)
+    {
+        printf("Nao ha alunos cadastrados\n");
+        return;
+    }
+
     list("================ ESTUDANTES ================", students, total_students, sizeof(Person), personListagemAdapter);
 }
 
 void list_teachers()
 {
+    if (total_teachers == 0)
+    {
+        printf("Nao ha professores cadastrados\n");
+        return;
+    }
+
     list("================ PROFESSORES ================", teachers, total_teachers, sizeof(Person), personListagemAdapter);
 }
 
@@ -120,8 +133,7 @@ void listar_ordenado_people_module(int tipo)
         printf("0 - Sair");
         printf("\n=============================================\n");
 
-        scanf("%d", &option);
-        getchar();
+        option = read_int_option("Escolha uma das opcoes: ", 0, 5);
 
         clear_screen();
 

@@ -13,10 +13,10 @@ int main()
     int opcao = 1;
     while (opcao)
     {
-        clear_screen();
+        clear_screen(&opcao);
         show_menu();
-        scanf("%d", &opcao);
 
+        opcao = read_int_option("Escolha uma opcao: ", 0, 6);
         switch (opcao)
         {
         case 1:

@@ -4,7 +4,7 @@ void remover(void *array, int *total, size_t element_size)
 {
 
     int id_remover;
-    scanf("%d", &id_remover);
+    id_remover = read_int_option("", 0, *total - 1);
 
     if (id_remover < 0 || id_remover >= *total)
     {

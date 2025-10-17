@@ -60,39 +60,21 @@ void update_person(Person array[], int total, int type)
         return;
     }
 
-    char id[SIZE_REGISTRATION];
-    printf("Digite a matricula para atualizacao: ");
-    scanf("%s", id);
-    getchar();
-
-    int index = -1;
-    for (int i = 0; i < total; i++)
-    {
-        if (strcmp(array[i].registration, id) == 0)
-        {
-            index = i;
-            break;
-        }
-    }
-    if (index == -1)
-    {
-        printf("Matricula nao encontrada.\n");
-        pause_view_without_clear_buffer();
-        return;
-    }
+    int index = read_int_option("Digite o id para atualizar: ", 0, total - 1);
 
     int option = 0;
     do
     {
+        clear_screen();
         printf("========= Atualizando a matricula %s =========\n\n", array[index].registration);
         printf("1 - Atualizar nome\n");
         printf("2 - Atualizar genero\n");
         printf("3 - Atualizar data de aniversario\n");
         printf("4 - Atualizar CPF\n");
         printf("0 - Sair\n\n");
-        printf("Escolha uma das opcoes: ");
-        scanf("%d", &option);
-        getchar();
+        printf("==============================================\n");
+
+        option = read_int_option("Escolha uma das opcoes: ", 0, 6);
 
         switch (option)
         {
@@ -164,8 +146,7 @@ void birthdays_by_month()
 {
     int month;
 
-    printf("Digite o mes para ver os aniversariantes (1-12): ");
-    scanf("%d", &month);
+    month = read_int_option("Digite o mes para ver os aniversariantes (1-12): ", 1, 12);
 
     if (month < 1 || month > 12)
     {
