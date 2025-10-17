@@ -13,6 +13,7 @@ O sistema permite cadastrar e gerenciar Pessoas (Alunos e Professores) e Discipl
   - Listar alunos/professores
   - Listar de maneira ordenada de acordo com algum "atributo"
   - Atualizar e remover registros
+  - Listar aniversariantes de um mês em específico
   - Buscar pessoas por nome
 - Gerenciamento de Disciplinas:
   - Adicionar disciplina
@@ -23,6 +24,7 @@ O sistema permite cadastrar e gerenciar Pessoas (Alunos e Professores) e Discipl
 - Utilitários:
   - Validação de entradas (nomes, números, códigos...)
   - Ordenação genérica com adapters
+  - Menu de desenvolvedor para facilitar testes
 
 ## Estrutura do projeto
 
