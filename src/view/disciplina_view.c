@@ -39,7 +39,8 @@ void list_subject_students(int *subject_count)
 
     if ((selected_subject->students_count) == 0)
     {
-        printf("%s nao possui alunos.", selected_subject->name);
+        clear_screen();
+        printf("%s Nao possui alunos.\n\n", selected_subject->name);
         return;
     }
 
@@ -67,24 +68,23 @@ void subject_module()
         case 1:
             clear_screen();
             add_subject(&total_subjects, &total_teachers);
-            pause_view();
+            pause_view_without_clear_buffer();
             break;
 
         case 2:
             clear_screen();
             list_subjects(&total_subjects);
-            pause_view_without_clear();
+            pause_view_without_clear_buffer();
             break;
 
         case 3:
             clear_screen();
             list_subject_students(&total_subjects);
-            pause_view_without_clear();
+            pause_view_without_clear_buffer();
             break;
         case 4:
             clear_screen();
             listar_ordenado_subject_module();
-            pause_view_without_clear();
             break;
 
         case 5:
@@ -96,7 +96,6 @@ void subject_module()
         case 6:
             clear_screen();
             remover_subject();
-            pause_view();
             break;
 
         default:

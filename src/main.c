@@ -41,6 +41,10 @@ int main()
             search_by_name();
             pause_view();
             break;
+        case 6:
+            clear_screen();
+            dev_menu_module();
+            break;
         case 0:
             clear_screen();
             printf("Saindo...\n");

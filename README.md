@@ -4,28 +4,29 @@ Projeto Escola é um trabalho da disciplina INF029 (Laboratório de Programaçã
 
 ## Resumo
 
-O sistema permite cadastrar e gerenciar Pessoas (Alunos e Professores) e Disciplinas. Fornece operações básicas de CRUD, listagens com adaptadores de exibição e ordenação, e algumas validações de entrada.
+O sistema permite cadastrar e gerenciar Pessoas (Alunos e Professores) e Disciplinas. Fornece operações básicas de CRUD, listagens com adaptadores de exibição e ordenação, busca e algumas validações de entrada.
 
 ## Funcionalidades principais
 
 - Gerenciamento de Pessoas:
   - Adicionar aluno/professor
   - Listar alunos/professores
-  - Listar de maneira rdenada de acordo com algum "atributo"
+  - Listar de maneira ordenada de acordo com algum "atributo"
   - Atualizar e remover registros
+  - Buscar pessoas por nome
 - Gerenciamento de Disciplinas:
   - Adicionar disciplina
   - Listar disciplinas
+  - Listar de maneira ordenada de acordo com algum "atributo"
   - Associar professor e alunos a uma disciplina
   - Atualizar e remover disciplinas
 - Utilitários:
   - Validação de entradas (nomes, números, códigos...)
-  - Funções de formatação (uppercase)
   - Ordenação genérica com adapters
 
 ## Estrutura do projeto
 
-Diretórios principais (em `src/`):
+Diretórios principais:
 
 - `controller/` — lógica de controle (operações CRUD, fluxo de menus)
 - `model/` — definições e estruturas de dados (Person, Subject, adapters)
@@ -47,7 +48,7 @@ Requisitos básicos:
    ```bash
    cd src
    make
-   ./program
+   make start
    ```
 
 2. Windows — opção recomendada: MSYS2 / MinGW (GCC)

@@ -7,15 +7,16 @@
 #include "model.h"
 
 #define MAX_STR 20
-#define MAX_CODE 8 // Aceita, no máximo, 6 caracteres --> esperado - 2 ('\n' e '\0')
-#define MAX_SUBJECTS 4
-#define MAX_STUDENTS 2
+#define MAX_CODE 8 // Aceita, no máximo, 6 caracteres --> esperando - 2 ('\n' e '\0')
+#define MAX_SUBJECTS 100
+#define MAX_STUDENTS 40
+#define MAX_SEMESTER 3 // Ex: "1" ou "12"
 
 typedef struct Subject
 {
     char name[MAX_STR];
     char code[MAX_CODE];
-    char semester[MAX_STR];
+    char semester[MAX_SEMESTER];
     Person teacher;
     Person students[MAX_STUDENTS];
     int students_count;

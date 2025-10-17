@@ -8,7 +8,8 @@ void show_menu()
     printf("2 - Modulo Professor\n");
     printf("3 - Modulo Disciplina\n");
     printf("4 - Aniversariantes do mes\n");
-    printf("5 - Buscar por nome\n");
+    printf("5 - Buscar pessoas por nome\n");
+    printf("6 - DEV MENU\n");
     printf("0 - Sair");
     printf("\n================================\n");
 
@@ -28,6 +29,7 @@ void subjects_menu(int *option)
     printf("0 - Sair");
     printf("\n==================================\n");
 
+    printf("Escolha uma opcao: ");
     scanf("%d", option);
     getchar();
 }
@@ -43,9 +45,9 @@ void update_subject_menu(int *option, Subject *selected_subject)
     printf("5 - Adicionar aluno\n");
     printf("6 - Remover aluno\n");
     printf("0 - Sair\n");
-
     printf("\n==================================\n");
 
+    printf("Escolha uma opcao: ");
     scanf("%d", option);
     getchar();
 }
@@ -62,6 +64,7 @@ void students_menu(int *option)
     printf("0 - Sair");
     printf("\n=============================\n");
 
+    printf("Escolha uma opcao: ");
     scanf("%d", option);
     getchar();
 }
@@ -78,6 +81,75 @@ void teachers_menu(int *option)
     printf("0 - Sair");
     printf("\n==================================\n");
 
+    printf("Escolha uma opcao: ");
     scanf("%d", option);
     getchar();
+}
+
+// --------- DEV MENU
+
+void dev_menu(int *option)
+{
+    clear_screen();
+    printf("\n======== MENU DE DESENVOLVEDOR ========\n");
+    printf("1 - Adicionar 20 Alunos\n");
+    printf("2 - Adicionar 20 Professores\n");
+    printf("3 - Adicionar 5 Disciplinas\n");
+    printf("4 - Remover todos os Alunos\n");
+    printf("5 - Remover todos os Professores\n");
+    printf("6 - Remover todas as Disciplinas\n");
+    printf("7 - Mostrar totais\n");
+    printf("0 - Sair\n");
+    printf("=======================================\n");
+
+    printf("Escolha uma opcao: ");
+    scanf("%d", option);
+    getchar();
+}
+
+void dev_menu_module()
+{
+    int option = 1;
+    while (option)
+    {
+        dev_menu(&option);
+        switch (option)
+        {
+        case 0:
+            printf("Saindo do Módulo de Desenvolvedor...\n");
+            return;
+        case 1:
+            clear_screen();
+            dev_add_students();
+            break;
+        case 2:
+            clear_screen();
+            dev_add_teachers();
+            break;
+        case 3:
+            clear_screen();
+            dev_add_subjects();
+            break;
+        case 4:
+            clear_screen();
+            dev_clear_students();
+            break;
+        case 5:
+            clear_screen();
+            dev_clear_teachers();
+            break;
+        case 6:
+            clear_screen();
+            dev_clear_subjects();
+            break;
+        case 7:
+            clear_screen();
+            dev_show_totals();
+            break;
+        default:
+            printf("Opção inválida!\n");
+            pause_view_without_clear_buffer();
+            break;
+        }
+    }
 }
