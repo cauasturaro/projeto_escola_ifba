@@ -25,7 +25,7 @@ void list_subject_students(int *subject_count)
     scanf("%d", &selected_subject_id);
     getchar();
 
-    while ((selected_subject_id > total_subjects) || (selected_subject_id <= 0))
+    while ((selected_subject_id >= total_subjects) || (selected_subject_id < 0))
     {
         printf("ID invalido!\n");
         list_subjects(subject_count);
@@ -43,7 +43,7 @@ void list_subject_students(int *subject_count)
     }
 
     printf("\n========== ALUNOS DE %s ==========\n", selected_subject->name);
-    for (int i = 0; i < selected_subject->students_count && students[i].gender; i++)
+    for (int i = 0; i < selected_subject->students_count; i++)
     {
         printf("> ID: %d | Matricula: %s | Nome: %s | Genero: %c | Data de Nascimento: %s | CPF: %s\n",
                i, selected_subject->students[i].registration, selected_subject->students[i].name, selected_subject->students[i].gender,
@@ -131,7 +131,7 @@ void listar_ordenado_subject_module()
         switch (option)
         {
         case 0:
-            printf("Saindo de Listar Filtado...\n");
+            printf("Saindo de Listar Filtrado...\n");
             return;
 
         case 1:
