@@ -127,3 +127,98 @@ void remover_teacher()
     printf("Digite o ID do professor a ser removido: ");
     remover((void *)teachers, &total_teachers, sizeof(Person));
 }
+
+void birthdays_by_month(){
+    int month;
+    
+    printf("Digite o mes para ver os aniversariantes (1-12): ");
+    scanf("%d", &month);
+    
+    if(month < 1 || month > 12){
+        printf("Mes invalido.\n");
+        return;
+    }
+    
+    printf("\n=== Aniversariantes do mes %02d ===\n", month);
+    int found = 0;
+    
+    for (int i = 0; i < total_students; i++)
+    {
+        int birth_month = (students[i].birth[3] - '0') * 10 + (students[i].birth[4] - '0');
+
+        if (birth_month == month)
+        {
+            printf("Estudante: %s | Nascimento: %s\n", students[i].name, students[i].birth);
+            found = 1;
+        }
+    }
+
+    for (int i = 0; i < total_teachers; i++)
+    {
+        int birth_month = (teachers[i].birth[3] - '0') * 10 + (teachers[i].birth[4] - '0');
+
+        if (birth_month == month)
+        {
+            printf("Professor: %s | Nascimento: %s\n", teachers[i].name, teachers[i].birth);
+            found = 1;
+        }
+    }
+
+    if (!found)
+        printf("Nenhum aniversariante encontrado neste mes.\n");
+}
+
+void to_lowercase(char *str) {
+    for (int i = 0; str[i]; i++)
+        if (str[i] >= 'A' && str[i] <= 'Z')
+            str[i] += 32;
+}
+
+void search_by_name(){
+    char search[100];
+    int found = 0;
+
+    printf("Digite pelo menos 3 letras do nome a ser buscado: ");
+    scanf(" %[^\n]", search);
+
+    if (strlen(search) < 3) {
+        printf("Você deve digitar pelo menos 3 letras.\n");
+        return;
+    }
+    to_lowercase(search); 
+
+    printf("\n======== Resultados da busca por '%s' ========\n", search);
+
+    int printed_students = 0;
+    for (int i = 0; i < total_students; i++) {
+        char name_copy[100];
+        strcpy(name_copy, students[i].name);
+        to_lowercase(name_copy);
+
+        if (strstr(name_copy, search)) {
+            if (!printed_students) {
+            printf("\nAlunos:\n");
+            printed_students = 1;
+            }
+            printf("> Nome: %s, Matricula: %s\n", students[i].name, students[i].registration);
+            found = 1;
+        }
+    }
+
+    int printed_teachers = 0;
+    for (int i = 0; i < total_teachers; i++) {
+        char name_copy[100];
+        strcpy(name_copy, teachers[i].name);
+        to_lowercase(name_copy);
+
+        if (strstr(name_copy, search)) {
+            if(!printed_teachers) {
+                printf("\nProfessores:\n");
+                printed_teachers = 1;
+            }
+            printf("> Nome: %s, Matricula: %s\n", teachers[i].name, teachers[i].registration);
+            found = 1;
+        }
+    }
+    if (!found) printf("Nenhuma pessoa encontrada com essas letras.\n");
+}

@@ -14,7 +14,8 @@ void list_subjects(int *subject_count)
 
 void list_subject_students(int *subject_count)
 {
-    if (!total_subjects) {
+    if (!total_subjects)
+    {
         printf("Nao ha disciplinas cadastradas.\n");
         return;
     }
@@ -72,18 +73,18 @@ void subject_module()
         case 2:
             clear_screen();
             list_subjects(&total_subjects);
-            pause_view();
+            pause_view_without_clear();
             break;
 
         case 3:
             clear_screen();
             list_subject_students(&total_subjects);
-            pause_view();
+            pause_view_without_clear();
             break;
         case 4:
             clear_screen();
             listar_ordenado_subject_module();
-            pause_view();
+            pause_view_without_clear();
             break;
 
         case 5:
@@ -107,7 +108,8 @@ void subject_module()
 
 void listar_ordenado_subject_module()
 {
-    if (total_subjects == 0) {
+    if (total_subjects == 0)
+    {
         printf("Nao ha disciplinas cadastradas\n");
         return;
     }

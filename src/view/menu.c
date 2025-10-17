@@ -3,11 +3,12 @@
 
 void show_menu()
 {
-    clear_screen();
     printf("\n======== MENU PRINCIPAL ========\n");
-    printf("1 - Módulo Aluno\n");
-    printf("2 - Módulo Professor\n");
-    printf("3 - Módulo Disciplina\n");
+    printf("1 - Modulo Aluno\n");
+    printf("2 - Modulo Professor\n");
+    printf("3 - Modulo Disciplina\n");
+    printf("4 - Aniversariantes do mes\n");
+    printf("5 - Buscar por nome\n");
     printf("0 - Sair");
     printf("\n================================\n");
 
@@ -59,7 +60,7 @@ void students_menu(int *option)
     printf("4 - Atualizar Aluno\n");
     printf("5 - Remover Aluno\n");
     printf("0 - Sair");
-    printf("\n==============================\n");
+    printf("\n=============================\n");
 
     scanf("%d", option);
     getchar();

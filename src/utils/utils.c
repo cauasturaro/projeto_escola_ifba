@@ -23,7 +23,21 @@ void clear_screen()
 #endif
 }
 
+void clear_buffer()
+{
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF)
+        ;
+}
+
 void pause_view()
+{
+    printf("Pressione ENTER para continuar...");
+    clear_buffer();
+    getchar();
+}
+
+void pause_view_without_clear()
 {
     printf("Pressione ENTER para continuar...");
     getchar();
