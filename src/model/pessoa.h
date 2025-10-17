@@ -11,13 +11,14 @@
 #define SIZE_CPF 16
 #define MAX_PEOPLE 100
 
-typedef struct
+typedef struct Person
 {
     char name[SIZE_NAME];
     char registration[SIZE_REGISTRATION];
     char gender;
     char birth[SIZE_BIRTH];
     char CPF[SIZE_CPF];
+    int enrolled_subjects;
 } Person;
 
 extern Person students[MAX_PEOPLE];

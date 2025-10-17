@@ -56,11 +56,17 @@ void students_module()
 
         case 4:
             clear_screen();
+            search_by_enrolled_subjects();
+            pause_view();
+            break;
+
+        case 5:
+            clear_screen();
             list_students();
             update_person(students, total_students, 1);
             break;
 
-        case 5:
+        case 6:
             clear_screen();
             remover_student();
             pause_view();
