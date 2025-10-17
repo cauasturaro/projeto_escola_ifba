@@ -67,24 +67,24 @@ void subject_module()
         case 1:
             clear_screen();
             add_subject(&total_subjects, &total_teachers);
-            pause_view();
+            pause_view_without_clear_buffer();
             break;
 
         case 2:
             clear_screen();
             list_subjects(&total_subjects);
-            pause_view_without_clear();
+            pause_view_without_clear_buffer();
             break;
 
         case 3:
             clear_screen();
             list_subject_students(&total_subjects);
-            pause_view_without_clear();
+            pause_view_without_clear_buffer();
             break;
         case 4:
             clear_screen();
             listar_ordenado_subject_module();
-            pause_view_without_clear();
+            pause_view_without_clear_buffer();
             break;
 
         case 5:
@@ -96,7 +96,6 @@ void subject_module()
         case 6:
             clear_screen();
             remover_subject();
-            pause_view();
             break;
 
         default:

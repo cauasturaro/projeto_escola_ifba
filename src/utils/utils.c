@@ -37,7 +37,7 @@ void pause_view()
     getchar();
 }
 
-void pause_view_without_clear()
+void pause_view_without_clear_buffer()
 {
     printf("Pressione ENTER para continuar...");
     getchar();

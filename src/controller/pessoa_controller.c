@@ -9,6 +9,7 @@ void register_person(int type)
         if (total_students >= MAX_PEOPLE)
         {
             printf("Erro! Limite de estudantes atingido.\n");
+            pause_view_without_clear_buffer();
             return;
         }
     }
@@ -17,6 +18,7 @@ void register_person(int type)
         if (total_teachers >= MAX_PEOPLE)
         {
             printf("Erro! Limite de professores atingido.\n");
+            pause_view_without_clear_buffer();
             return;
         }
     }
@@ -47,14 +49,14 @@ void update_person(Person array[], int total, int type)
     if (type == 1 && total_students == 0)
     {
         printf("Nenhum aluno cadastrado!\n\n");
-        pause_view_without_clear();
+        pause_view_without_clear_buffer();
         return;
     }
 
     if (type == 2 && total_teachers == 0)
     {
         printf("Nenhum professor cadastrado!\n\n");
-        pause_view_without_clear();
+        pause_view_without_clear_buffer();
         return;
     }
 
@@ -75,18 +77,19 @@ void update_person(Person array[], int total, int type)
     if (index == -1)
     {
         printf("Matricula nao encontrada.\n");
+        pause_view_without_clear_buffer();
         return;
     }
 
     int option = 0;
     do
     {
-        printf("Atualizando a matricula %s.\n", array[index].registration);
+        printf("========= Atualizando a matricula %s =========\n\n", array[index].registration);
         printf("1 - Atualizar nome\n");
         printf("2 - Atualizar genero\n");
         printf("3 - Atualizar data de aniversario\n");
         printf("4 - Atualizar CPF\n");
-        printf("0 - Sair\n");
+        printf("0 - Sair\n\n");
         printf("Escolha uma das opcoes: ");
         scanf("%d", &option);
         getchar();
@@ -134,6 +137,7 @@ void remover_student()
     if (total_students == 0)
     {
         printf("Nenhum aluno cadastrado!\n\n");
+        pause_view_without_clear_buffer();
         return;
     }
 
@@ -148,6 +152,7 @@ void remover_teacher()
     if (total_teachers == 0)
     {
         printf("Nenhum professor cadastrado!\n\n");
+        pause_view_without_clear_buffer();
         return;
     }
 

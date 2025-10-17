@@ -244,7 +244,7 @@ void remove_subject_student(Subject *selected_subject, int *students_count)
 
     for (int i = selected_student_id; i < *students_count - 1; i++)
     {
-        selected_subject->students[i] = selected_subject->students[i+1];
+        selected_subject->students[i] = selected_subject->students[i + 1];
     }
 
     (*students_count)--;
@@ -253,8 +253,10 @@ void remove_subject_student(Subject *selected_subject, int *students_count)
 
 void remover_subject()
 {
-    if (total_subjects == 0) {
+    if (total_subjects == 0)
+    {
         printf("Nao ha disciplinas cadastradas\n");
+        pause_view_without_clear_buffer();
         return;
     }
 

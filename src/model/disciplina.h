@@ -7,9 +7,9 @@
 #include "model.h"
 
 #define MAX_STR 20
-#define MAX_CODE 8 // Aceita, no máximo, 6 caracteres --> esperado - 2 ('\n' e '\0')
-#define MAX_SUBJECTS 4
-#define MAX_STUDENTS 2
+#define MAX_CODE 8 // Aceita, no máximo, 6 caracteres --> esperando - 2 ('\n' e '\0')
+#define MAX_SUBJECTS 100
+#define MAX_STUDENTS 40
 
 typedef struct Subject
 {
